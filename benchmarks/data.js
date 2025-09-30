@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1759247680913,
+  "lastUpdate": 1759271030646,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
@@ -260,6 +260,58 @@ window.BENCHMARK_DATA = {
             "range": "0.2895",
             "unit": "ms",
             "extra": "15101 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "f4dff6b8e12d1fe24d5cd5cb733b6842847252e5",
+          "message": "Merge pull request #243 from czlonkowski/feature/execution-data-filtering\n\nfeat: Intelligent Execution Data Filtering for n8n_get_execution Tool",
+          "timestamp": "2025-10-01T00:21:57+02:00",
+          "tree_id": "cabfa56be93a0a16e54e26a8fe67f8750eecde96",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/f4dff6b8e12d1fe24d5cd5cb733b6842847252e5"
+        },
+        "date": 1759271030160,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0193,
+            "range": "0.2752",
+            "unit": "ms",
+            "extra": "51703 ops/sec"
+          },
+          {
+            "name": "sample - array sorting - large",
+            "value": 3.1648,
+            "range": "0.46229999999999993",
+            "unit": "ms",
+            "extra": "316 ops/sec"
+          },
+          {
+            "name": "sample - string concatenation",
+            "value": 0.005,
+            "range": "0.2929",
+            "unit": "ms",
+            "extra": "199387 ops/sec"
+          },
+          {
+            "name": "sample - object creation",
+            "value": 0.0663,
+            "range": "0.3821",
+            "unit": "ms",
+            "extra": "15093 ops/sec"
           }
         ]
       }
