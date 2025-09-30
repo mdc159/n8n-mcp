@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1759226838832,
+  "lastUpdate": 1759236547404,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
@@ -156,6 +156,58 @@ window.BENCHMARK_DATA = {
             "range": "0.3649",
             "unit": "ms",
             "extra": "14957 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "3728a9cc67e3c6e9f000715c9a79e859c52dd13b",
+          "message": "Merge pull request #240 from czlonkowski/feature/partial-update-enhancements\n\nfeat: Add workflow cleanup and recovery operations (v2.14.4)",
+          "timestamp": "2025-09-30T14:47:23+02:00",
+          "tree_id": "e979bab861e5c15b3f008e123c1a0dd86b6189fe",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/3728a9cc67e3c6e9f000715c9a79e859c52dd13b"
+        },
+        "date": 1759236546682,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0191,
+            "range": "0.2371",
+            "unit": "ms",
+            "extra": "52490 ops/sec"
+          },
+          {
+            "name": "sample - array sorting - large",
+            "value": 3.1642,
+            "range": "0.5306000000000002",
+            "unit": "ms",
+            "extra": "316 ops/sec"
+          },
+          {
+            "name": "sample - string concatenation",
+            "value": 0.005,
+            "range": "0.2558",
+            "unit": "ms",
+            "extra": "199339 ops/sec"
+          },
+          {
+            "name": "sample - object creation",
+            "value": 0.0657,
+            "range": "0.3712",
+            "unit": "ms",
+            "extra": "15223 ops/sec"
           }
         ]
       }
