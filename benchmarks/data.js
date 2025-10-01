@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1759271030646,
+  "lastUpdate": 1759313435009,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
@@ -312,6 +312,58 @@ window.BENCHMARK_DATA = {
             "range": "0.3821",
             "unit": "ms",
             "extra": "15093 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "4854a50854003072814c59828720b6d646292e10",
+          "message": "Merge pull request #244 from czlonkowski/feature/webhook-error-execution-guidance\n\nfeat: enhance webhook error messages with execution guidance",
+          "timestamp": "2025-10-01T12:08:49+02:00",
+          "tree_id": "6b499b925c568797822462bd7941a791b38b8f18",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/4854a50854003072814c59828720b6d646292e10"
+        },
+        "date": 1759313434545,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0191,
+            "range": "0.24659999999999999",
+            "unit": "ms",
+            "extra": "52220 ops/sec"
+          },
+          {
+            "name": "sample - array sorting - large",
+            "value": 3.1619,
+            "range": "1.3000000000000003",
+            "unit": "ms",
+            "extra": "316 ops/sec"
+          },
+          {
+            "name": "sample - string concatenation",
+            "value": 0.0048,
+            "range": "0.25780000000000003",
+            "unit": "ms",
+            "extra": "206903 ops/sec"
+          },
+          {
+            "name": "sample - object creation",
+            "value": 0.0669,
+            "range": "0.3",
+            "unit": "ms",
+            "extra": "14951 ops/sec"
           }
         ]
       }
