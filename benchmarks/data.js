@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1759486525404,
+  "lastUpdate": 1759491142014,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
@@ -520,6 +520,58 @@ window.BENCHMARK_DATA = {
             "range": "0.41300000000000003",
             "unit": "ms",
             "extra": "15066 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "a84dbd6a1596b252bfc56c6a49dac6ee4db0c2d8",
+          "message": "Merge pull request #252 from czlonkowski/feat/integration-tests-foundation\n\nfeat: Integration Testing Foundation (Phase 1)",
+          "timestamp": "2025-10-03T13:30:36+02:00",
+          "tree_id": "03fe6a6421eeab42b0997505ffa9dccbac5b3039",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/a84dbd6a1596b252bfc56c6a49dac6ee4db0c2d8"
+        },
+        "date": 1759491141285,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0191,
+            "range": "0.2942",
+            "unit": "ms",
+            "extra": "52461 ops/sec"
+          },
+          {
+            "name": "sample - array sorting - large",
+            "value": 3.1812,
+            "range": "0.5036",
+            "unit": "ms",
+            "extra": "314 ops/sec"
+          },
+          {
+            "name": "sample - string concatenation",
+            "value": 0.0048,
+            "range": "0.24780000000000002",
+            "unit": "ms",
+            "extra": "210122 ops/sec"
+          },
+          {
+            "name": "sample - object creation",
+            "value": 0.0671,
+            "range": "0.367",
+            "unit": "ms",
+            "extra": "14895 ops/sec"
           }
         ]
       }
