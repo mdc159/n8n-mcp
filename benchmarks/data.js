@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1759496085196,
+  "lastUpdate": 1759504146270,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
@@ -624,6 +624,58 @@ window.BENCHMARK_DATA = {
             "range": "0.4316",
             "unit": "ms",
             "extra": "14787 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "4b764c6110f9e06774776ce721d41f4b2fd1c399",
+          "message": "Merge pull request #254 from czlonkowski/fix/telemetry-error-message-capture\n\nfeat(telemetry): capture error messages with security hardening",
+          "timestamp": "2025-10-03T17:07:02+02:00",
+          "tree_id": "0eaea9fd102d37fe82d6ecd16d29c3f72770ef1a",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/4b764c6110f9e06774776ce721d41f4b2fd1c399"
+        },
+        "date": 1759504145549,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0196,
+            "range": "0.29900000000000004",
+            "unit": "ms",
+            "extra": "50892 ops/sec"
+          },
+          {
+            "name": "sample - array sorting - large",
+            "value": 3.1765,
+            "range": "0.6139000000000001",
+            "unit": "ms",
+            "extra": "315 ops/sec"
+          },
+          {
+            "name": "sample - string concatenation",
+            "value": 0.0046,
+            "range": "0.30920000000000003",
+            "unit": "ms",
+            "extra": "218413 ops/sec"
+          },
+          {
+            "name": "sample - object creation",
+            "value": 0.0662,
+            "range": "0.2958",
+            "unit": "ms",
+            "extra": "15105 ops/sec"
           }
         ]
       }
