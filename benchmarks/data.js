@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1759416970199,
+  "lastUpdate": 1759475398175,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
@@ -416,6 +416,58 @@ window.BENCHMARK_DATA = {
             "range": "0.36769999999999997",
             "unit": "ms",
             "extra": "15004 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "3bab53a3be7516c9b95516f10a43543de661a8b5",
+          "message": "Merge pull request #250 from czlonkowski/feature/p0-priorities-fixes\n\nfeat(P0-R3): Pre-extracted template configurations + Remove get_node_for_task",
+          "timestamp": "2025-10-03T09:08:07+02:00",
+          "tree_id": "d05bf45ce167750b84362d671ab7341f4d06a746",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/3bab53a3be7516c9b95516f10a43543de661a8b5"
+        },
+        "date": 1759475397473,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0192,
+            "range": "0.2307",
+            "unit": "ms",
+            "extra": "52217 ops/sec"
+          },
+          {
+            "name": "sample - array sorting - large",
+            "value": 3.1656,
+            "range": "0.46320000000000006",
+            "unit": "ms",
+            "extra": "316 ops/sec"
+          },
+          {
+            "name": "sample - string concatenation",
+            "value": 0.0046,
+            "range": "0.2481",
+            "unit": "ms",
+            "extra": "215526 ops/sec"
+          },
+          {
+            "name": "sample - object creation",
+            "value": 0.0675,
+            "range": "0.2952",
+            "unit": "ms",
+            "extra": "14820 ops/sec"
           }
         ]
       }
