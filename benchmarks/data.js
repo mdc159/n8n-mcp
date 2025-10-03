@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1759475398175,
+  "lastUpdate": 1759486525404,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
@@ -468,6 +468,58 @@ window.BENCHMARK_DATA = {
             "range": "0.2952",
             "unit": "ms",
             "extra": "14820 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "f74427bdb5fde342bf27f7b19db6b65ca73add68",
+          "message": "Merge pull request #251 from czlonkowski/fix/p0-workflow-creation-normalization-bug\n\nfix(p0): remove incorrect node type normalization before n8n API calls",
+          "timestamp": "2025-10-03T12:13:25+02:00",
+          "tree_id": "bcb74917537b64059331c1c4d3d780b1b45b5191",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/f74427bdb5fde342bf27f7b19db6b65ca73add68"
+        },
+        "date": 1759486525133,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0194,
+            "range": "0.37020000000000003",
+            "unit": "ms",
+            "extra": "51622 ops/sec"
+          },
+          {
+            "name": "sample - array sorting - large",
+            "value": 3.4046,
+            "range": "0.6403999999999996",
+            "unit": "ms",
+            "extra": "294 ops/sec"
+          },
+          {
+            "name": "sample - string concatenation",
+            "value": 0.0046,
+            "range": "0.28500000000000003",
+            "unit": "ms",
+            "extra": "216003 ops/sec"
+          },
+          {
+            "name": "sample - object creation",
+            "value": 0.0664,
+            "range": "0.41300000000000003",
+            "unit": "ms",
+            "extra": "15066 ops/sec"
           }
         ]
       }
