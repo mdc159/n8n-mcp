@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1759491142014,
+  "lastUpdate": 1759496085196,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
@@ -572,6 +572,58 @@ window.BENCHMARK_DATA = {
             "range": "0.367",
             "unit": "ms",
             "extra": "14895 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "4bf8f7006dd81d6420368122563bc21cc295bc2a",
+          "message": "Merge pull request #253 from czlonkowski/fix/search-templates-metadata-timeout\n\nrefactor: enhance search_templates_by_metadata with production-ready improvements",
+          "timestamp": "2025-10-03T14:52:42+02:00",
+          "tree_id": "404bd1ce3b2156ced739a7ccf82f66a842d91f2f",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/4bf8f7006dd81d6420368122563bc21cc295bc2a"
+        },
+        "date": 1759496084803,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0191,
+            "range": "0.3128",
+            "unit": "ms",
+            "extra": "52360 ops/sec"
+          },
+          {
+            "name": "sample - array sorting - large",
+            "value": 3.4106,
+            "range": "0.5886",
+            "unit": "ms",
+            "extra": "293 ops/sec"
+          },
+          {
+            "name": "sample - string concatenation",
+            "value": 0.0047,
+            "range": "0.291",
+            "unit": "ms",
+            "extra": "213979 ops/sec"
+          },
+          {
+            "name": "sample - object creation",
+            "value": 0.0676,
+            "range": "0.4316",
+            "unit": "ms",
+            "extra": "14787 ops/sec"
           }
         ]
       }
