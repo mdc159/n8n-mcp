@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1759504146270,
+  "lastUpdate": 1759567664307,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
@@ -676,6 +676,58 @@ window.BENCHMARK_DATA = {
             "range": "0.2958",
             "unit": "ms",
             "extra": "15105 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "88e288f8f622ce7f6c7b5fede070808f6fb7d480",
+          "message": "Merge pull request #256 from czlonkowski/feat/integration-tests-phase-2\n\nfeat(tests): implement Phase 2 integration testing - workflow creation tests",
+          "timestamp": "2025-10-04T10:45:54+02:00",
+          "tree_id": "954bf1e2cc08e2cd2e3eedde002c308350991863",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/88e288f8f622ce7f6c7b5fede070808f6fb7d480"
+        },
+        "date": 1759567663624,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0192,
+            "range": "0.24150000000000002",
+            "unit": "ms",
+            "extra": "52075 ops/sec"
+          },
+          {
+            "name": "sample - array sorting - large",
+            "value": 3.18,
+            "range": "0.5068000000000001",
+            "unit": "ms",
+            "extra": "314 ops/sec"
+          },
+          {
+            "name": "sample - string concatenation",
+            "value": 0.005,
+            "range": "0.2547",
+            "unit": "ms",
+            "extra": "201379 ops/sec"
+          },
+          {
+            "name": "sample - object creation",
+            "value": 0.0655,
+            "range": "0.2891",
+            "unit": "ms",
+            "extra": "15275 ops/sec"
           }
         ]
       }
