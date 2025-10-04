@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1759573692254,
+  "lastUpdate": 1759576716661,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
@@ -780,6 +780,58 @@ window.BENCHMARK_DATA = {
             "range": "0.34400000000000003",
             "unit": "ms",
             "extra": "15158 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "7fcfa8f696c0c5d0c99a41676d9d17ec8ea7e495",
+          "message": "Merge pull request #257 from czlonkowski/feat/integration-tests-phase-3\n\nfeat(tests): Phase 3 Integration Tests - Workflow Retrieval",
+          "timestamp": "2025-10-04T13:16:29+02:00",
+          "tree_id": "a3e23ef0f3d681da57749ad82ea89b398418183e",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/7fcfa8f696c0c5d0c99a41676d9d17ec8ea7e495"
+        },
+        "date": 1759576716338,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0192,
+            "range": "0.2838",
+            "unit": "ms",
+            "extra": "52131 ops/sec"
+          },
+          {
+            "name": "sample - array sorting - large",
+            "value": 3.4023,
+            "range": "0.5754999999999999",
+            "unit": "ms",
+            "extra": "294 ops/sec"
+          },
+          {
+            "name": "sample - string concatenation",
+            "value": 0.0047,
+            "range": "0.2705",
+            "unit": "ms",
+            "extra": "213744 ops/sec"
+          },
+          {
+            "name": "sample - object creation",
+            "value": 0.066,
+            "range": "0.35419999999999996",
+            "unit": "ms",
+            "extra": "15141 ops/sec"
           }
         ]
       }
