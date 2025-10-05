@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1759654811558,
+  "lastUpdate": 1759677383028,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
@@ -1144,6 +1144,58 @@ window.BENCHMARK_DATA = {
             "range": "0.4305",
             "unit": "ms",
             "extra": "14689 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "67c3c9c9c844762d866ccb7357ac28a5854bfafb",
+          "message": "Merge pull request #271 from czlonkowski/fix/issue-270-apostrophe-handling\n\nfix: Issues #269 and #270 - addNode examples + special characters in node names",
+          "timestamp": "2025-10-05T17:14:35+02:00",
+          "tree_id": "72b4f21744a1144aeba1318e82b1f848188f1189",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/67c3c9c9c844762d866ccb7357ac28a5854bfafb"
+        },
+        "date": 1759677382541,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0197,
+            "range": "2.2969000000000004",
+            "unit": "ms",
+            "extra": "50739 ops/sec"
+          },
+          {
+            "name": "sample - array sorting - large",
+            "value": 3.2765,
+            "range": "0.7348999999999997",
+            "unit": "ms",
+            "extra": "305 ops/sec"
+          },
+          {
+            "name": "sample - string concatenation",
+            "value": 0.0047,
+            "range": "0.3273",
+            "unit": "ms",
+            "extra": "211371 ops/sec"
+          },
+          {
+            "name": "sample - object creation",
+            "value": 0.0678,
+            "range": "0.39849999999999997",
+            "unit": "ms",
+            "extra": "14752 ops/sec"
           }
         ]
       }
