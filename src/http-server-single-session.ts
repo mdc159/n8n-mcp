@@ -6,6 +6,7 @@
  */
 import express from 'express';
 import rateLimit from 'express-rate-limit';
+import helmet from 'helmet';
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
 import { SSEServerTransport } from '@modelcontextprotocol/sdk/server/sse.js';
 import { N8NDocumentationMCPServer } from './mcp/server';
@@ -677,9 +678,11 @@ export class SingleSessionHTTPServer {
    */
   async start(): Promise<void> {
     const app = express();
-    
+
     // Create JSON parser middleware for endpoints that need it
-    const jsonParser = express.json({ limit: '10mb' });
+    // SECURITY: Limit request body size to prevent resource exhaustion
+    // See: https://github.com/czlonkowski/n8n-mcp/issues/265 (MEDIUM-02)
+    const jsonParser = express.json({ limit: '1mb' });
     
     // Configure trust proxy for correct IP logging behind reverse proxies
     const trustProxy = process.env.TRUST_PROXY ? Number(process.env.TRUST_PROXY) : 0;
@@ -690,15 +693,60 @@ export class SingleSessionHTTPServer {
     
     // DON'T use any body parser globally - StreamableHTTPServerTransport needs raw stream
     // Only use JSON parser for specific endpoints that need it
-    
-    // Security headers
+
+    // SECURITY: Limit URL length to prevent buffer overflow attacks
+    // See: https://github.com/czlonkowski/n8n-mcp/issues/265 (MEDIUM-02)
     app.use((req, res, next) => {
-      res.setHeader('X-Content-Type-Options', 'nosniff');
-      res.setHeader('X-Frame-Options', 'DENY');
-      res.setHeader('X-XSS-Protection', '1; mode=block');
-      res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+      if (req.url.length > 2048) {
+        logger.warn('Request rejected: URL too long', {
+          urlLength: req.url.length,
+          ip: req.ip,
+          userAgent: req.get('user-agent'),
+          event: 'input_validation_failure'
+        });
+        return res.status(414).json({
+          jsonrpc: '2.0',
+          error: { code: -32600, message: 'URI Too Long' },
+          id: null
+        });
+      }
       next();
     });
+
+    // SECURITY: Comprehensive security headers via helmet
+    // See: https://github.com/czlonkowski/n8n-mcp/issues/265 (HIGH-08)
+    app.use(helmet({
+      contentSecurityPolicy: {
+        directives: {
+          defaultSrc: ["'self'"],
+          scriptSrc: ["'self'"],
+          styleSrc: ["'self'", "'unsafe-inline'"],
+          imgSrc: ["'self'", "data:", "https:"],
+          connectSrc: ["'self'"],
+          fontSrc: ["'self'"],
+          objectSrc: ["'none'"],
+          mediaSrc: ["'self'"],
+          frameSrc: ["'none'"],
+        },
+      },
+      referrerPolicy: { policy: 'strict-origin-when-cross-origin' },
+      hsts: {
+        maxAge: 31536000,
+        includeSubDomains: true,
+        preload: true
+      },
+      permissionsPolicy: {
+        features: {
+          camera: ["'none'"],
+          microphone: ["'none'"],
+          geolocation: ["'none'"],
+          payment: ["'none'"]
+        }
+      }
+    }));
+
+    // Remove X-Powered-By header
+    app.disable('x-powered-by');
     
     // CORS configuration
     app.use((req, res, next) => {
@@ -1213,17 +1261,19 @@ export class SingleSessionHTTPServer {
       });
     });
     
-    // Error handler
+    // SECURITY: Error handler with sanitization
+    // See: https://github.com/czlonkowski/n8n-mcp/issues/265 (HIGH-04)
     app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
       logger.error('Express error handler:', err);
-      
+
       if (!res.headersSent) {
-        res.status(500).json({ 
+        // Use sanitizeErrorForClient() to ensure no stack traces or internal details leak
+        const sanitized = this.sanitizeErrorForClient(err);
+        res.status(500).json({
           jsonrpc: '2.0',
           error: {
             code: -32603,
-            message: 'Internal server error',
-            data: process.env.NODE_ENV === 'development' ? err.message : undefined
+            message: sanitized.message
           },
           id: null
         });

@@ -995,6 +995,45 @@ MIT License - see [LICENSE](LICENSE) for details.
 - 🔗 Linking back to this repo
 
 
+## 🔒 Security & Dependencies
+
+### Upstream Dependencies
+
+This project depends on n8n packages which are maintained by the n8n team. Any vulnerabilities in the following packages are upstream responsibilities:
+- `n8n-workflow`
+- `n8n-nodes-base`
+- `@n8n/n8n-nodes-langchain`
+- Related n8n dependencies (@n8n/*, @langchain/*)
+
+We sync with n8n releases using `npm run update:n8n` when new versions are published by the n8n team.
+
+### Direct Dependencies
+
+Our direct dependencies (express, axios, helmet, etc.) are kept up to date. Run `npm audit` to check current status:
+
+```bash
+# Check for vulnerabilities in project dependencies
+npm audit
+
+# Note: Vulnerabilities in n8n packages are upstream responsibilities
+# and will be fixed by the n8n team in their releases
+```
+
+### Security Updates
+
+- **Monitor n8n releases**: https://github.com/n8n-io/n8n/releases
+- **Check our dependencies**: `npm audit`
+- **Check for n8n updates**: `npm run update:n8n:check`
+- **Update n8n packages**: `npm run update:n8n` (when new version available)
+
+### Security Configuration
+
+For production deployments, ensure you configure:
+- Strong `AUTH_TOKEN` (minimum 32 characters)
+- Specific `CORS_ORIGIN` (not wildcard `*`)
+- `WEBHOOK_SECURITY_MODE=strict` (default)
+- Review [Security Best Practices](./docs/HTTP_DEPLOYMENT.md#security-best-practices)
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please:

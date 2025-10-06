@@ -116,6 +116,12 @@ function insertAndRankConfigs(db: any, configs: any[]) {
   }
 
   // Rank configs per node_type by template popularity
+  /**
+   * @security SQL: Static UPDATE statement with no user input.
+   * Template literal used for multi-line formatting only.
+   * See: https://github.com/czlonkowski/n8n-mcp/issues/265 (HIGH-01)
+   */
+  // eslint-disable-next-line no-restricted-syntax
   db.exec(`
     UPDATE template_node_configs
     SET rank = (
@@ -127,6 +133,11 @@ function insertAndRankConfigs(db: any, configs: any[]) {
   `);
 
   // Keep only top 10 per node_type
+  /**
+   * @security SQL: Static DELETE statement with no user input.
+   * Template literal used for multi-line formatting only.
+   */
+  // eslint-disable-next-line no-restricted-syntax
   db.exec(`
     DELETE FROM template_node_configs
     WHERE id NOT IN (
@@ -294,6 +305,12 @@ async function fetchTemplates(
       
       if (!hasMetadataColumn) {
         console.log('📋 Adding metadata columns to existing schema...');
+        /**
+         * @security SQL: Static ALTER TABLE statement with no user input.
+         * Template literal used for multi-line formatting only.
+         * See: https://github.com/czlonkowski/n8n-mcp/issues/265 (HIGH-01)
+         */
+        // eslint-disable-next-line no-restricted-syntax
         db.exec(`
           ALTER TABLE templates ADD COLUMN metadata_json TEXT;
           ALTER TABLE templates ADD COLUMN metadata_generated_at DATETIME;

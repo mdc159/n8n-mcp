@@ -64,33 +64,54 @@ export class TemplateRepository {
         } else {
           // Create FTS5 virtual table
           logger.info('Creating FTS5 virtual table for templates...');
+          /**
+           * @security SQL: Static CREATE TABLE statement with no user input.
+           * Template literal used for multi-line formatting only.
+           * See: https://github.com/czlonkowski/n8n-mcp/issues/265 (HIGH-01)
+           */
+          // eslint-disable-next-line no-restricted-syntax
           this.db.exec(`
             CREATE VIRTUAL TABLE IF NOT EXISTS templates_fts USING fts5(
               name, description, content=templates
             );
           `);
-          
+
           // Create triggers to keep FTS5 in sync
+          /**
+           * @security SQL: Static CREATE TRIGGER statement with no user input.
+           * Template literal used for multi-line formatting only.
+           */
+          // eslint-disable-next-line no-restricted-syntax
           this.db.exec(`
             CREATE TRIGGER IF NOT EXISTS templates_ai AFTER INSERT ON templates BEGIN
               INSERT INTO templates_fts(rowid, name, description)
               VALUES (new.id, new.name, new.description);
             END;
           `);
-          
+
+          /**
+           * @security SQL: Static CREATE TRIGGER statement with no user input.
+           * Template literal used for multi-line formatting only.
+           */
+          // eslint-disable-next-line no-restricted-syntax
           this.db.exec(`
             CREATE TRIGGER IF NOT EXISTS templates_au AFTER UPDATE ON templates BEGIN
               UPDATE templates_fts SET name = new.name, description = new.description
               WHERE rowid = new.id;
             END;
           `);
-          
+
+          /**
+           * @security SQL: Static CREATE TRIGGER statement with no user input.
+           * Template literal used for multi-line formatting only.
+           */
+          // eslint-disable-next-line no-restricted-syntax
           this.db.exec(`
             CREATE TRIGGER IF NOT EXISTS templates_ad AFTER DELETE ON templates BEGIN
               DELETE FROM templates_fts WHERE rowid = old.id;
             END;
           `);
-          
+
           logger.info('FTS5 support enabled for template search');
         }
       } catch (error: any) {
@@ -524,8 +545,14 @@ export class TemplateRepository {
     try {
       // Clear existing FTS data
       this.db.exec('DELETE FROM templates_fts');
-      
+
       // Repopulate from templates table
+      /**
+       * @security SQL: Static INSERT-SELECT statement with no user input.
+       * Template literal used for multi-line formatting only.
+       * See: https://github.com/czlonkowski/n8n-mcp/issues/265 (HIGH-01)
+       */
+      // eslint-disable-next-line no-restricted-syntax
       this.db.exec(`
         INSERT INTO templates_fts(rowid, name, description)
         SELECT id, name, description FROM templates
