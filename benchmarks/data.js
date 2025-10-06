@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1759750129469,
+  "lastUpdate": 1759754500341,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
@@ -1300,6 +1300,58 @@ window.BENCHMARK_DATA = {
             "range": "0.3145",
             "unit": "ms",
             "extra": "15223 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "9a00a990116de7f7bee8a4207a64b477b8a9721b",
+          "message": "Merge pull request #279 from czlonkowski/security/issue-265-pr1-critical-timing-and-injection\n\n🔒 CRITICAL Security Fixes: Timing Attack & Command Injection (Issue #265)",
+          "timestamp": "2025-10-06T14:39:38+02:00",
+          "tree_id": "6537a13d13339660588b6610048a622b0146028f",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/9a00a990116de7f7bee8a4207a64b477b8a9721b"
+        },
+        "date": 1759754499594,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0188,
+            "range": "0.2805",
+            "unit": "ms",
+            "extra": "53131 ops/sec"
+          },
+          {
+            "name": "sample - array sorting - large",
+            "value": 3.0926,
+            "range": "0.6011000000000002",
+            "unit": "ms",
+            "extra": "323 ops/sec"
+          },
+          {
+            "name": "sample - string concatenation",
+            "value": 0.0039,
+            "range": "0.2629",
+            "unit": "ms",
+            "extra": "256741 ops/sec"
+          },
+          {
+            "name": "sample - object creation",
+            "value": 0.0607,
+            "range": "0.3702",
+            "unit": "ms",
+            "extra": "16469 ops/sec"
           }
         ]
       }
