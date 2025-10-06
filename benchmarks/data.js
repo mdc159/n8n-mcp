@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1759677383028,
+  "lastUpdate": 1759741461510,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
@@ -1196,6 +1196,58 @@ window.BENCHMARK_DATA = {
             "range": "0.39849999999999997",
             "unit": "ms",
             "extra": "14752 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "08abdb79372f8e68842c5477bb3fd9e7c40e46dd",
+          "message": "Merge pull request #274 from czlonkowski/fix/issue-272-connection-operations-phase0\n\nPhase 0 + Phase 1: Connection Operations + TypeError Fixes (Issues #272, #204, #275, #136)",
+          "timestamp": "2025-10-06T11:02:32+02:00",
+          "tree_id": "4d34ff5fba71f2b1f37196d70868c3326630228d",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/08abdb79372f8e68842c5477bb3fd9e7c40e46dd"
+        },
+        "date": 1759741461009,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0191,
+            "range": "0.28950000000000004",
+            "unit": "ms",
+            "extra": "52386 ops/sec"
+          },
+          {
+            "name": "sample - array sorting - large",
+            "value": 3.3439,
+            "range": "0.8758999999999997",
+            "unit": "ms",
+            "extra": "299 ops/sec"
+          },
+          {
+            "name": "sample - string concatenation",
+            "value": 0.0047,
+            "range": "0.26990000000000003",
+            "unit": "ms",
+            "extra": "211630 ops/sec"
+          },
+          {
+            "name": "sample - object creation",
+            "value": 0.0666,
+            "range": "0.33719999999999994",
+            "unit": "ms",
+            "extra": "15025 ops/sec"
           }
         ]
       }
