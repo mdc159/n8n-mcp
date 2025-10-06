@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1759741461510,
+  "lastUpdate": 1759750129469,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
@@ -1248,6 +1248,58 @@ window.BENCHMARK_DATA = {
             "range": "0.33719999999999994",
             "unit": "ms",
             "extra": "15025 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "czlonkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "czlonkowski",
+            "username": "czlonkowski"
+          },
+          "distinct": true,
+          "id": "e1be4473a328b598c1e1a46db3b7ebdc441c2a06",
+          "message": "Merge pull request #278 from czlonkowski/fix/issue-277-signal-handlers-stdio\n\nFix: Add signal handlers for stdio mode (Issue #277)\n\nFixes orphaned Node.js processes on Windows 11 when Claude Desktop quits.\n\nProduction-ready improvements:\n- Robust container detection (Docker, Kubernetes, Podman, containerd)\n- Fixed redundant exit calls with graceful 1000ms timeout\n- Error handling for stdin registration\n- Shutdown trigger logging for debugging\n\nCode Review: Approved - Production Ready (9.6/10)\nAll critical issues resolved, 90% Docker test pass confidence\n\nReported by: @Eddy-Chahed\nIssue: #277",
+          "timestamp": "2025-10-06T13:26:27+02:00",
+          "tree_id": "b0ca8db8325e3f28c4edb05066054060ab75262a",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/e1be4473a328b598c1e1a46db3b7ebdc441c2a06"
+        },
+        "date": 1759750129160,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0193,
+            "range": "0.25880000000000003",
+            "unit": "ms",
+            "extra": "51753 ops/sec"
+          },
+          {
+            "name": "sample - array sorting - large",
+            "value": 3.3839,
+            "range": "0.4937999999999998",
+            "unit": "ms",
+            "extra": "296 ops/sec"
+          },
+          {
+            "name": "sample - string concatenation",
+            "value": 0.0048,
+            "range": "0.27490000000000003",
+            "unit": "ms",
+            "extra": "208482 ops/sec"
+          },
+          {
+            "name": "sample - object creation",
+            "value": 0.0657,
+            "range": "0.3145",
+            "unit": "ms",
+            "extra": "15223 ops/sec"
           }
         ]
       }
