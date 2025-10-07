@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1759768197611,
+  "lastUpdate": 1759828917941,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
@@ -1404,6 +1404,58 @@ window.BENCHMARK_DATA = {
             "range": "0.3086",
             "unit": "ms",
             "extra": "15176 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "50439e2aa14c4cc593b477947ac55f3c19ae1229",
+          "message": "Merge pull request #281 from czlonkowski/feature/ai-node-validation\n\nfix: AI workflow validation - critical node type normalization bug",
+          "timestamp": "2025-10-07T11:20:09+02:00",
+          "tree_id": "c9b0b68988ae5bfeac4548a49fed7d321355fd5c",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/50439e2aa14c4cc593b477947ac55f3c19ae1229"
+        },
+        "date": 1759828917655,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0191,
+            "range": "0.23900000000000002",
+            "unit": "ms",
+            "extra": "52476 ops/sec"
+          },
+          {
+            "name": "sample - array sorting - large",
+            "value": 3.3962,
+            "range": "0.43900000000000006",
+            "unit": "ms",
+            "extra": "294 ops/sec"
+          },
+          {
+            "name": "sample - string concatenation",
+            "value": 0.0046,
+            "range": "0.2678",
+            "unit": "ms",
+            "extra": "217233 ops/sec"
+          },
+          {
+            "name": "sample - object creation",
+            "value": 0.0662,
+            "range": "0.3769",
+            "unit": "ms",
+            "extra": "15117 ops/sec"
           }
         ]
       }
