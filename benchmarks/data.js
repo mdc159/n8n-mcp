@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1759842585453,
+  "lastUpdate": 1759854275773,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
@@ -1560,6 +1560,58 @@ window.BENCHMARK_DATA = {
             "range": "0.38939999999999997",
             "unit": "ms",
             "extra": "15080 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "943f5862a3d022e3ff7b97a7a0368ee46e7a02e8",
+          "message": "Merge pull request #284 from czlonkowski/fix/resourcelocator-validation\n\nfix: Add resourceLocator validation for AI model nodes",
+          "timestamp": "2025-10-07T18:22:39+02:00",
+          "tree_id": "50a578b4a0bf082d0d524295309bded387c48b6e",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/943f5862a3d022e3ff7b97a7a0368ee46e7a02e8"
+        },
+        "date": 1759854275323,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0192,
+            "range": "0.364",
+            "unit": "ms",
+            "extra": "52187 ops/sec"
+          },
+          {
+            "name": "sample - array sorting - large",
+            "value": 3.3925,
+            "range": "0.6648999999999998",
+            "unit": "ms",
+            "extra": "295 ops/sec"
+          },
+          {
+            "name": "sample - string concatenation",
+            "value": 0.0048,
+            "range": "0.26030000000000003",
+            "unit": "ms",
+            "extra": "206451 ops/sec"
+          },
+          {
+            "name": "sample - object creation",
+            "value": 0.0697,
+            "range": "0.314",
+            "unit": "ms",
+            "extra": "14339 ops/sec"
           }
         ]
       }
