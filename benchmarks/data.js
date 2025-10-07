@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1759828917941,
+  "lastUpdate": 1759831677382,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
@@ -1456,6 +1456,58 @@ window.BENCHMARK_DATA = {
             "range": "0.3769",
             "unit": "ms",
             "extra": "15117 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "fd6572763273a2fb7e0494f61ee1385c597ba8f4",
+          "message": "Merge pull request #282 from czlonkowski/fix/docker-telemetry-user-id-stability\n\nfix: Docker/cloud telemetry user ID stability (v2.17.1)",
+          "timestamp": "2025-10-07T12:06:03+02:00",
+          "tree_id": "41086a89a11cd4a6637e8c6879656e98e973e404",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/fd6572763273a2fb7e0494f61ee1385c597ba8f4"
+        },
+        "date": 1759831676695,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0192,
+            "range": "0.24159999999999998",
+            "unit": "ms",
+            "extra": "52163 ops/sec"
+          },
+          {
+            "name": "sample - array sorting - large",
+            "value": 3.2659,
+            "range": "3.0094999999999996",
+            "unit": "ms",
+            "extra": "306 ops/sec"
+          },
+          {
+            "name": "sample - string concatenation",
+            "value": 0.0046,
+            "range": "0.27240000000000003",
+            "unit": "ms",
+            "extra": "215207 ops/sec"
+          },
+          {
+            "name": "sample - object creation",
+            "value": 0.0659,
+            "range": "0.31810000000000005",
+            "unit": "ms",
+            "extra": "15172 ops/sec"
           }
         ]
       }
