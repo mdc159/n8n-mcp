@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1759854275773,
+  "lastUpdate": 1759873429081,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
@@ -1612,6 +1612,58 @@ window.BENCHMARK_DATA = {
             "range": "0.314",
             "unit": "ms",
             "extra": "14339 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "49757e3c22363f18eee95b2eb24324311f0d70b0",
+          "message": "Merge pull request #285 from czlonkowski/fix/version-extraction-and-typeversion-validation\n\nfix: correct version extraction and typeVersion validation for langchain nodes",
+          "timestamp": "2025-10-07T23:41:53+02:00",
+          "tree_id": "a2f18d7ed7a8f59d261c7ef436d6cf618d6f472f",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/49757e3c22363f18eee95b2eb24324311f0d70b0"
+        },
+        "date": 1759873428698,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0199,
+            "range": "0.2711",
+            "unit": "ms",
+            "extra": "50183 ops/sec"
+          },
+          {
+            "name": "sample - array sorting - large",
+            "value": 3.217,
+            "range": "1.3245999999999998",
+            "unit": "ms",
+            "extra": "311 ops/sec"
+          },
+          {
+            "name": "sample - string concatenation",
+            "value": 0.0046,
+            "range": "0.2717",
+            "unit": "ms",
+            "extra": "215056 ops/sec"
+          },
+          {
+            "name": "sample - object creation",
+            "value": 0.0671,
+            "range": "0.4048",
+            "unit": "ms",
+            "extra": "14898 ops/sec"
           }
         ]
       }
