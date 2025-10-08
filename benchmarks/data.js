@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1759873429081,
+  "lastUpdate": 1759908039786,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
@@ -1664,6 +1664,58 @@ window.BENCHMARK_DATA = {
             "range": "0.4048",
             "unit": "ms",
             "extra": "14898 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "f33b6261793d04e2e9a014548770610efc7c8f9d",
+          "message": "Merge pull request #287 from czlonkowski/fix/cicd-release-pipeline-failures\n\nfix: resolve CI/CD release pipeline failures and optimize workflow",
+          "timestamp": "2025-10-08T09:18:44+02:00",
+          "tree_id": "8ff09d32412e41b1f365dcd271f1b5e3789fc505",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/f33b6261793d04e2e9a014548770610efc7c8f9d"
+        },
+        "date": 1759908039081,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.019,
+            "range": "0.2286",
+            "unit": "ms",
+            "extra": "52629 ops/sec"
+          },
+          {
+            "name": "sample - array sorting - large",
+            "value": 3.3875,
+            "range": "0.46399999999999997",
+            "unit": "ms",
+            "extra": "295 ops/sec"
+          },
+          {
+            "name": "sample - string concatenation",
+            "value": 0.0046,
+            "range": "0.293",
+            "unit": "ms",
+            "extra": "215558 ops/sec"
+          },
+          {
+            "name": "sample - object creation",
+            "value": 0.0659,
+            "range": "0.29",
+            "unit": "ms",
+            "extra": "15183 ops/sec"
           }
         ]
       }
