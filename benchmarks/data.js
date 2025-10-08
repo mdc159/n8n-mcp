@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1759913109077,
+  "lastUpdate": 1759919328844,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
@@ -1739,6 +1739,37 @@ window.BENCHMARK_DATA = {
           "url": "https://github.com/czlonkowski/n8n-mcp/commit/a2cc37bdf76894551a818b465423d433a9d498ec"
         },
         "date": 1759913108603,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0136,
+            "range": "0.3096",
+            "unit": "ms",
+            "extra": "73341 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "08a1d42f09b5e8c3136a72fa9d41e2d2f8eef9c1",
+          "message": "Merge pull request #289 from czlonkowski/fix/validation-warning-system-redesign\n\nfix: resolve validation warning system false positives (96.5% noise reduction)",
+          "timestamp": "2025-10-08T12:27:00+02:00",
+          "tree_id": "3b7a19efc62cc7353fac6ff2a21edcbfcc15aa9a",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/08a1d42f09b5e8c3136a72fa9d41e2d2f8eef9c1"
+        },
+        "date": 1759919328351,
         "tool": "customSmallerIsBetter",
         "benches": [
           {
