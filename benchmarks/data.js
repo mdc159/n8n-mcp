@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1759908039786,
+  "lastUpdate": 1759913109077,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
@@ -1716,6 +1716,37 @@ window.BENCHMARK_DATA = {
             "range": "0.29",
             "unit": "ms",
             "extra": "15183 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "a2cc37bdf76894551a818b465423d433a9d498ec",
+          "message": "Merge pull request #288 from czlonkowski/feat/meaningful-performance-benchmarks\n\nfeat: replace placeholder benchmarks with meaningful MCP tool performance tests",
+          "timestamp": "2025-10-08T10:43:25+02:00",
+          "tree_id": "b3b00e63a2ad3fbd5a759f5760b7e6ea54cdcfd0",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/a2cc37bdf76894551a818b465423d433a9d498ec"
+        },
+        "date": 1759913108603,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0136,
+            "range": "0.3096",
+            "unit": "ms",
+            "extra": "73341 ops/sec"
           }
         ]
       }
