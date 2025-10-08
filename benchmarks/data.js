@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1759919328844,
+  "lastUpdate": 1759926721416,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
@@ -1770,6 +1770,37 @@ window.BENCHMARK_DATA = {
           "url": "https://github.com/czlonkowski/n8n-mcp/commit/08a1d42f09b5e8c3136a72fa9d41e2d2f8eef9c1"
         },
         "date": 1759919328351,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0136,
+            "range": "0.3096",
+            "unit": "ms",
+            "extra": "73341 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "08d43bd7fb816e1abb60595e1ccf0ee56318cee3",
+          "message": "Merge pull request #290 from czlonkowski/feature/telemetry-docker-cloud-detection\n\nfeat: add Docker/cloud environment detection to telemetry (v2.18.1)",
+          "timestamp": "2025-10-08T14:30:00+02:00",
+          "tree_id": "76f68a2dea5dd4b3c423781b25d0b0476fa99641",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/08d43bd7fb816e1abb60595e1ccf0ee56318cee3"
+        },
+        "date": 1759926720930,
         "tool": "customSmallerIsBetter",
         "benches": [
           {
