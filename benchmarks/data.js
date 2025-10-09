@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1760001780202,
+  "lastUpdate": 1760044360805,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
@@ -1832,6 +1832,37 @@ window.BENCHMARK_DATA = {
           "url": "https://github.com/czlonkowski/n8n-mcp/commit/51278f52e90bdee3384d9d490bfa918e0bdd272a"
         },
         "date": 1760001779794,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0136,
+            "range": "0.3096",
+            "unit": "ms",
+            "extra": "73341 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "c52bbcbb830f43355fe8186564e46dceebd82ad3",
+          "message": "Merge pull request #298 from czlonkowski/fix/issue-296-nodejs-adapter-bypass\n\nfix: resolve sql.js adapter bypass in NodeRepository constructor (Issue #296)",
+          "timestamp": "2025-10-09T23:10:37+02:00",
+          "tree_id": "0233b737e3aa00e5d3f6ee496c7dc0c0c758eaf8",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/c52bbcbb830f43355fe8186564e46dceebd82ad3"
+        },
+        "date": 1760044360500,
         "tool": "customSmallerIsBetter",
         "benches": [
           {
