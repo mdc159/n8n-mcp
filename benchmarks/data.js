@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1759926721416,
+  "lastUpdate": 1760001780202,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
@@ -1801,6 +1801,37 @@ window.BENCHMARK_DATA = {
           "url": "https://github.com/czlonkowski/n8n-mcp/commit/08d43bd7fb816e1abb60595e1ccf0ee56318cee3"
         },
         "date": 1759926720930,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0136,
+            "range": "0.3096",
+            "unit": "ms",
+            "extra": "73341 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "51278f52e90bdee3384d9d490bfa918e0bdd272a",
+          "message": "Merge pull request #295 from czlonkowski/feature/telemetry-docker-cloud-detection\n\nfeat: Complete startup error logging system with safety fixes (v2.18.3)",
+          "timestamp": "2025-10-09T11:21:08+02:00",
+          "tree_id": "b4ae7835d1d11264b1f11e2cd0447ab835ee00b8",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/51278f52e90bdee3384d9d490bfa918e0bdd272a"
+        },
+        "date": 1760001779794,
         "tool": "customSmallerIsBetter",
         "benches": [
           {
