@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1760089712005,
+  "lastUpdate": 1760100301096,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
@@ -1894,6 +1894,37 @@ window.BENCHMARK_DATA = {
           "url": "https://github.com/czlonkowski/n8n-mcp/commit/4016ac42ef0fc6897bbd34b95f1aa5347f5dbc17"
         },
         "date": 1760089711735,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0136,
+            "range": "0.3096",
+            "unit": "ms",
+            "extra": "73341 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "29b2b1d4c13407c8cf1446c1e4124429481c052c",
+          "message": "Merge pull request #303 from czlonkowski/feature/environment-aware-diagnostics\n\nfeat: Add environment-aware debugging to diagnostic tools",
+          "timestamp": "2025-10-10T14:43:25+02:00",
+          "tree_id": "360e6bdf0ac53bcdf5e4b29f45fda31d17cade28",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/29b2b1d4c13407c8cf1446c1e4124429481c052c"
+        },
+        "date": 1760100300753,
         "tool": "customSmallerIsBetter",
         "benches": [
           {
