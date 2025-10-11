@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1760209685653,
+  "lastUpdate": 1760216110126,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
@@ -1987,6 +1987,37 @@ window.BENCHMARK_DATA = {
           "url": "https://github.com/czlonkowski/n8n-mcp/commit/1f43784315853a8fe107a6df6c0fdd433a07097e"
         },
         "date": 1760209685361,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0136,
+            "range": "0.3096",
+            "unit": "ms",
+            "extra": "73341 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "8b5b01de98127549026c3b0c385fe05e2e635539",
+          "message": "Merge pull request #309 from czlonkowski/feature/library-usage-multi-tenant\n\nfeat: Add library usage support for multi-tenant deployments",
+          "timestamp": "2025-10-11T22:53:14+02:00",
+          "tree_id": "0f2f16689451703fd8f6699adfb3cc3699de25e5",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/8b5b01de98127549026c3b0c385fe05e2e635539"
+        },
+        "date": 1760216109460,
         "tool": "customSmallerIsBetter",
         "benches": [
           {
