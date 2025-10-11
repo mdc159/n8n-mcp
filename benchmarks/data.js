@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1760216110126,
+  "lastUpdate": 1760221287099,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
@@ -2018,6 +2018,37 @@ window.BENCHMARK_DATA = {
           "url": "https://github.com/czlonkowski/n8n-mcp/commit/8b5b01de98127549026c3b0c385fe05e2e635539"
         },
         "date": 1760216109460,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0136,
+            "range": "0.3096",
+            "unit": "ms",
+            "extra": "73341 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "4566253bdc2bc1bc734034c183b5249d4c96053e",
+          "message": "Merge pull request #310 from czlonkowski/fix/npm-publish-library-fields\n\nfix: Add library export fields to npm package (main, types, exports)",
+          "timestamp": "2025-10-12T00:19:26+02:00",
+          "tree_id": "1a3dae74ae5010ff5e212b1f629bacc30466b6f7",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/4566253bdc2bc1bc734034c183b5249d4c96053e"
+        },
+        "date": 1760221286694,
         "tool": "customSmallerIsBetter",
         "benches": [
           {
