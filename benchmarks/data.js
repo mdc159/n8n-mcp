@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1760100301096,
+  "lastUpdate": 1760195751366,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
@@ -1925,6 +1925,37 @@ window.BENCHMARK_DATA = {
           "url": "https://github.com/czlonkowski/n8n-mcp/commit/29b2b1d4c13407c8cf1446c1e4124429481c052c"
         },
         "date": 1760100300753,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0136,
+            "range": "0.3096",
+            "unit": "ms",
+            "extra": "73341 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "dc62fd66cbc58a518b2a5a3ace3902b0f87fdaa4",
+          "message": "Merge pull request #307 from czlonkowski/security/command-injection-fix-part2\n\nsecurity: improve path validation and git command safety",
+          "timestamp": "2025-10-11T17:14:00+02:00",
+          "tree_id": "7f95ffcfc68f715b1e1acabe68fc9fa38c00a4c5",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/dc62fd66cbc58a518b2a5a3ace3902b0f87fdaa4"
+        },
+        "date": 1760195750679,
         "tool": "customSmallerIsBetter",
         "benches": [
           {
