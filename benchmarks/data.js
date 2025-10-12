@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1760298819359,
+  "lastUpdate": 1760304998078,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
@@ -2080,6 +2080,37 @@ window.BENCHMARK_DATA = {
           "url": "https://github.com/czlonkowski/n8n-mcp/commit/e11a885b0d886dfca9ad3648c339fb33fa5581cb"
         },
         "date": 1760298818707,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0136,
+            "range": "0.3096",
+            "unit": "ms",
+            "extra": "73341 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "aa8a6a7069eb32a3ab3d1e3e8b96ff603171762e",
+          "message": "fix: Emit onSessionCreated event during standard initialize flow (#315)",
+          "timestamp": "2025-10-12T23:34:51+02:00",
+          "tree_id": "82d72ac6c4037f486cda2dc474e5852388cebdb0",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/aa8a6a7069eb32a3ab3d1e3e8b96ff603171762e"
+        },
+        "date": 1760304997768,
         "tool": "customSmallerIsBetter",
         "benches": [
           {
