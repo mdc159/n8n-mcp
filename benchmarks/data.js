@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1760221287099,
+  "lastUpdate": 1760298819359,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
@@ -2049,6 +2049,37 @@ window.BENCHMARK_DATA = {
           "url": "https://github.com/czlonkowski/n8n-mcp/commit/4566253bdc2bc1bc734034c183b5249d4c96053e"
         },
         "date": 1760221286694,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0136,
+            "range": "0.3096",
+            "unit": "ms",
+            "extra": "73341 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "e11a885b0d886dfca9ad3648c339fb33fa5581cb",
+          "message": "Merge pull request #312 from czlonkowski/feature/session-persistence-phase-1\n\nfeat: Complete Session Persistence Implementation - v2.19.0 (All Phases)",
+          "timestamp": "2025-10-12T21:51:33+02:00",
+          "tree_id": "a954a09aff7e8ba8cb84afd8109d1e9f3fced2dd",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/e11a885b0d886dfca9ad3648c339fb33fa5581cb"
+        },
+        "date": 1760298818707,
         "tool": "customSmallerIsBetter",
         "benches": [
           {
