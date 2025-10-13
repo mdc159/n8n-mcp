@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1760304998078,
+  "lastUpdate": 1760349357044,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
@@ -2111,6 +2111,37 @@ window.BENCHMARK_DATA = {
           "url": "https://github.com/czlonkowski/n8n-mcp/commit/aa8a6a7069eb32a3ab3d1e3e8b96ff603171762e"
         },
         "date": 1760304997768,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0136,
+            "range": "0.3096",
+            "unit": "ms",
+            "extra": "73341 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "318986f5468cca51f6b0851f98b86da672bbe810",
+          "message": "🚨 HOTFIX v2.19.2: Fix critical session cleanup stack overflow (#316)\n\n* fix: Fix critical session cleanup stack overflow bug (v2.19.2)\n\nThis commit fixes a critical P0 bug that caused stack overflow during\ncontainer restart, making the service unusable for all users with\nsession persistence enabled.\n\nRoot Causes:\n1. Missing await in cleanupExpiredSessions() line 206 caused\n   overlapping async cleanup attempts\n2. Transport event handlers (onclose, onerror) triggered recursive\n   cleanup during shutdown\n3. No recursion guard to prevent concurrent cleanup of same session\n\nFixes Applied:\n- Added cleanupInProgress Set recursion guard\n- Added isShuttingDown flag to prevent recursive event handlers\n- Implemented safeCloseTransport() with timeout protection (3s)\n- Updated removeSession() with recursion guard and safe close\n- Fixed cleanupExpiredSessions() to properly await with error isolation\n- Updated all transport event handlers to check shutdown flag\n- Enhanced shutdown() method for proper sequential cleanup\n\nImpact:\n- Service now survives container restarts without stack overflow\n- No more hanging requests after restart\n- Individual session cleanup failures don't cascade\n- All 77 session lifecycle tests passing\n\nVersion: 2.19.2\nSeverity: CRITICAL\nPriority: P0\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\n\n* chore: Bump package.runtime.json to v2.19.2\n\n* test: Fix transport cleanup test to work with safeCloseTransport\n\nThe test was manually triggering mockTransport.onclose() to simulate\ncleanup, but our stack overflow fix sets transport.onclose = undefined\nin safeCloseTransport() before closing.\n\nUpdated the test to call removeSession() directly instead of manually\ntriggering the onclose handler. This properly tests the cleanup behavior\nwith the new recursion-safe approach.\n\nChanges:\n- Call removeSession() directly to test cleanup\n- Verify transport.close() is called\n- Verify onclose and onerror handlers are cleared\n- Verify all session data structures are cleaned up\n\nTest Results: All 115 session tests passing ✅\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\n\n---------\n\nCo-authored-by: Claude <noreply@anthropic.com>",
+          "timestamp": "2025-10-13T11:54:18+02:00",
+          "tree_id": "cfc4c528ea123da4a891f3b9ef54f4c219aafa57",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/318986f5468cca51f6b0851f98b86da672bbe810"
+        },
+        "date": 1760349356727,
         "tool": "customSmallerIsBetter",
         "benches": [
           {
