@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1760349357044,
+  "lastUpdate": 1760354006031,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
@@ -2142,6 +2142,37 @@ window.BENCHMARK_DATA = {
           "url": "https://github.com/czlonkowski/n8n-mcp/commit/318986f5468cca51f6b0851f98b86da672bbe810"
         },
         "date": 1760349356727,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0136,
+            "range": "0.3096",
+            "unit": "ms",
+            "extra": "73341 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "112b40119c347d4e823d3876f94b2c4bc9736886",
+          "message": "fix: Reconnect transport layer during session restoration (v2.19.3) (#317)\n\nFixes critical bug where session restoration successfully restored InstanceContext\nbut failed to reconnect the transport layer, causing all requests on restored\nsessions to hang indefinitely.\n\nRoot Cause:\nThe handleRequest() method's session restoration flow (lines 1119-1197) called\ncreateSession() which creates a NEW transport separate from the current HTTP request.\nThis separate transport is not linked to the current req/res pair, so responses\ncannot be sent back through the active HTTP connection.\n\nFix Applied:\nReplace createSession() call with inline transport creation that mirrors the\ninitialize flow. Create StreamableHTTPServerTransport directly for the current\nHTTP req/res context and ensure transport is connected to server BEFORE handling\nrequest. This makes restored sessions work identically to fresh sessions.\n\nImpact:\n- Zero-downtime deployments now work correctly\n- Users can continue work after container restart without restarting MCP client\n- Session persistence is now fully functional for production use\n\nTechnical Details:\nThe StreamableHTTPServerTransport class from MCP SDK links a specific HTTP\nreq/res pair to the MCP server. Creating transport in createSession() binds\nit to the wrong req/res (or no req/res at all). The initialize flow got this\nright, but restoration flow did not.\n\nFiles Changed:\n- src/http-server-single-session.ts: Fixed session restoration (lines 1163-1244)\n- package.json, package.runtime.json, src/mcp-engine.ts: Version bump to 2.19.3\n- CHANGELOG.md: Documented fix with technical details\n\nTesting:\nAll 13 session persistence integration tests pass, verifying restoration works\ncorrectly.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-authored-by: Claude <noreply@anthropic.com>",
+          "timestamp": "2025-10-13T13:11:35+02:00",
+          "tree_id": "42baae925980e1e3c5d15b698f352df3740e3eb0",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/112b40119c347d4e823d3876f94b2c4bc9736886"
+        },
+        "date": 1760354005300,
         "tool": "customSmallerIsBetter",
         "benches": [
           {
