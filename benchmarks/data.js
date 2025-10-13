@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1760354006031,
+  "lastUpdate": 1760360035932,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
@@ -2173,6 +2173,37 @@ window.BENCHMARK_DATA = {
           "url": "https://github.com/czlonkowski/n8n-mcp/commit/112b40119c347d4e823d3876f94b2c4bc9736886"
         },
         "date": 1760354005300,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0136,
+            "range": "0.3096",
+            "unit": "ms",
+            "extra": "73341 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "dd62040155ff9baf332a3a075ffddb40d5dc8ef7",
+          "message": "🐛 Critical: Initialize MCP server for restored sessions (v2.19.4) (#318)\n\n* fix: Initialize MCP server for restored sessions (v2.19.4)\n\nCompletes session restoration feature by properly initializing MCP server\ninstances during session restoration, enabling tool calls to work after\nserver restart.\n\n## Problem\n\nSession restoration successfully restored InstanceContext (v2.19.0) and\ntransport layer (v2.19.3), but failed to initialize the MCP Server instance,\ncausing all tool calls on restored sessions to fail with \"Server not\ninitialized\" error.\n\nThe MCP protocol requires an initialize handshake before accepting tool calls.\nWhen restoring a session, we create a NEW MCP Server instance (uninitialized),\nbut the client thinks it already initialized (with the old instance before\nrestart). When the client sends a tool call, the new server rejects it.\n\n## Solution\n\nCreated `initializeMCPServerForSession()` method that:\n- Sends synthetic initialize request to new MCP server instance\n- Brings server into initialized state without requiring client to re-initialize\n- Includes 5-second timeout and comprehensive error handling\n- Called after `server.connect(transport)` during session restoration flow\n\n## The Three Layers of Session State (Now Complete)\n\n1. Data Layer (InstanceContext): Session configuration ✅ v2.19.0\n2. Transport Layer (HTTP Connection): Request/response binding ✅ v2.19.3\n3. Protocol Layer (MCP Server Instance): Initialize handshake ✅ v2.19.4\n\n## Changes\n\n- Added `initializeMCPServerForSession()` in src/http-server-single-session.ts:521-605\n- Applied initialization in session restoration flow at line 1327\n- Added InitializeRequestSchema import from MCP SDK\n- Updated versions to 2.19.4 in package.json, package.runtime.json, mcp-engine.ts\n- Comprehensive CHANGELOG.md entry with technical details\n\n## Testing\n\n- Build: ✅ Successful compilation with no TypeScript errors\n- Type Checking: ✅ No type errors (npm run lint passed)\n- Integration Tests: ✅ All 13 session persistence tests passed\n- MCP Tools Test: ✅ 23 tools tested, 100% success rate\n- Code Review: ✅ 9.5/10 rating, production ready\n\n## Impact\n\nEnables true zero-downtime deployments for HTTP-based n8n-mcp installations.\nUsers can now:\n- Restart containers without disrupting active sessions\n- Continue working seamlessly after server restart\n- No need to manually reconnect their MCP clients\n\nFixes #[issue-number]\nDepends on: v2.19.3 (PR #317)\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\n\n* fix: Make MCP initialization non-fatal during session restoration\n\nThis commit implements graceful degradation for MCP server initialization\nduring session restoration to prevent test failures with empty databases.\n\n## Problem\nSession restoration was failing in CI tests with 500 errors because:\n- Tests use :memory: database with no node data\n- initializeMCPServerForSession() threw errors when MCP init failed\n- These errors bubbled up as 500 responses, failing tests\n- MCP init happened AFTER retry policy succeeded, so retries couldn't help\n\n## Solution\nHybrid approach combining graceful degradation and test mode detection:\n\n1. **Test Mode Detection**: Skip MCP init when NODE_ENV='test' and\n   NODE_DB_PATH=':memory:' to prevent failures in test environments\n   with empty databases\n\n2. **Graceful Degradation**: Wrap MCP initialization in try-catch,\n   making it non-fatal in production. Log warnings but continue if\n   init fails, maintaining session availability\n\n3. **Session Resilience**: Transport connection still succeeds even if\n   MCP init fails, allowing client to retry tool calls\n\n## Changes\n- Added test mode detection (lines 1330-1331)\n- Wrapped MCP init in try-catch (lines 1333-1346)\n- Logs warnings instead of throwing errors\n- Continues session restoration even if MCP init fails\n\n## Impact\n- ✅ All 5 failing CI tests now pass\n- ✅ Production sessions remain resilient to MCP init failures\n- ✅ Session restoration continues even with database issues\n- ✅ Maintains backward compatibility\n\nCloses failing tests in session-lifecycle-retry.test.ts\nRelated to PR #318 and v2.19.4 session restoration fixes\n\n---------\n\nCo-authored-by: Claude <noreply@anthropic.com>",
+          "timestamp": "2025-10-13T14:52:00+02:00",
+          "tree_id": "0573c3dffc66e87ab4e1cc274a8ec7874dddafb2",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/dd62040155ff9baf332a3a075ffddb40d5dc8ef7"
+        },
+        "date": 1760360035234,
         "tool": "customSmallerIsBetter",
         "benches": [
           {
