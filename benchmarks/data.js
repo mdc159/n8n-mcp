@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1760360035932,
+  "lastUpdate": 1760391834380,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
@@ -2204,6 +2204,37 @@ window.BENCHMARK_DATA = {
           "url": "https://github.com/czlonkowski/n8n-mcp/commit/dd62040155ff9baf332a3a075ffddb40d5dc8ef7"
         },
         "date": 1760360035234,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0136,
+            "range": "0.3096",
+            "unit": "ms",
+            "extra": "73341 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "fe1309151ae6645e1d776d69cde8a72a10890d2e",
+          "message": "fix: Implement warm start pattern for session restoration (v2.19.5) (#320)\n\nFixes critical bug where synthetic MCP initialization had no HTTP context\nto respond through, causing timeouts. Implements warm start pattern that\nhandles the current request immediately.\n\nBreaking Changes:\n- Deleted broken initializeMCPServerForSession() method (85 lines)\n- Removed unused InitializeRequestSchema import\n\nImplementation:\n- Warm start: restore session → handle request immediately\n- Client receives -32000 error → auto-retries with initialize\n- Idempotency guards prevent concurrent restoration duplicates\n- Cleanup on failure removes failed sessions\n- Early return prevents double processing\n\nChanges:\n- src/http-server-single-session.ts: Simplified restoration (lines 1118-1247)\n- tests/integration/session-restoration-warmstart.test.ts: 9 new tests\n- docs/MULTI_APP_INTEGRATION.md: Warm start documentation\n- CHANGELOG.md: v2.19.5 entry\n- package.json: Version bump to 2.19.5\n- package.runtime.json: Version bump to 2.19.5\n\nTesting:\n- 9/9 new integration tests passing\n- 13/13 existing session tests passing\n- No regressions in MCP tools (12 tools verified)\n- Build and lint successful\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-authored-by: Claude <noreply@anthropic.com>",
+          "timestamp": "2025-10-13T23:42:10+02:00",
+          "tree_id": "7273ef5c5ebc47ac2521a86f0423bf9527cd467e",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/fe1309151ae6645e1d776d69cde8a72a10890d2e"
+        },
+        "date": 1760391834049,
         "tool": "customSmallerIsBetter",
         "benches": [
           {
