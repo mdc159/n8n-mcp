@@ -1,60 +1,8 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1760433020105,
+  "lastUpdate": 1760434399729,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
-      {
-        "commit": {
-          "author": {
-            "email": "56956555+czlonkowski@users.noreply.github.com",
-            "name": "Romuald Członkowski",
-            "username": "czlonkowski"
-          },
-          "committer": {
-            "email": "noreply@github.com",
-            "name": "GitHub",
-            "username": "web-flow"
-          },
-          "distinct": true,
-          "id": "48df87f76c6f98cae435f88b5174c23cc84c5194",
-          "message": "Merge pull request #239 from czlonkowski/chore/update-n8n-dependencies\n\nchore: update n8n to v1.113.3 and enhance template system",
-          "timestamp": "2025-09-30T12:05:25+02:00",
-          "tree_id": "b1e10a446acab98a962b8e3302449b0ae3fa8fcf",
-          "url": "https://github.com/czlonkowski/n8n-mcp/commit/48df87f76c6f98cae435f88b5174c23cc84c5194"
-        },
-        "date": 1759226838396,
-        "tool": "customSmallerIsBetter",
-        "benches": [
-          {
-            "name": "sample - array sorting - small",
-            "value": 0.0193,
-            "range": "0.26780000000000004",
-            "unit": "ms",
-            "extra": "51695 ops/sec"
-          },
-          {
-            "name": "sample - array sorting - large",
-            "value": 3.1624,
-            "range": "0.4584999999999999",
-            "unit": "ms",
-            "extra": "316 ops/sec"
-          },
-          {
-            "name": "sample - string concatenation",
-            "value": 0.0046,
-            "range": "0.2793",
-            "unit": "ms",
-            "extra": "215438 ops/sec"
-          },
-          {
-            "name": "sample - object creation",
-            "value": 0.0669,
-            "range": "0.3649",
-            "unit": "ms",
-            "extra": "14957 ops/sec"
-          }
-        ]
-      },
       {
         "commit": {
           "author": {
@@ -2193,6 +2141,37 @@ window.BENCHMARK_DATA = {
           "url": "https://github.com/czlonkowski/n8n-mcp/commit/43998992551a392828118b1575bbf4b2d552d821"
         },
         "date": 1760433019804,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0136,
+            "range": "0.3096",
+            "unit": "ms",
+            "extra": "73341 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "0f5b0d9463149923267293cd3b7255e6fb2c7116",
+          "message": "chore: bump version to 2.19.6 (#324)\n\nBump version to 2.19.6 to be higher than npm registry version (2.19.5).\n\n🤖 Generated with [Claude Code](https://claude.ai/code)\n\nCo-authored-by: Claude <noreply@anthropic.com>",
+          "timestamp": "2025-10-14T11:31:29+02:00",
+          "tree_id": "e4047fc43eb58852478cbd87602f38541268f578",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/0f5b0d9463149923267293cd3b7255e6fb2c7116"
+        },
+        "date": 1760434398965,
         "tool": "customSmallerIsBetter",
         "benches": [
           {
