@@ -1,60 +1,8 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1760391834380,
+  "lastUpdate": 1760429730658,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
-      {
-        "commit": {
-          "author": {
-            "email": "56956555+czlonkowski@users.noreply.github.com",
-            "name": "Romuald Członkowski",
-            "username": "czlonkowski"
-          },
-          "committer": {
-            "email": "noreply@github.com",
-            "name": "GitHub",
-            "username": "web-flow"
-          },
-          "distinct": true,
-          "id": "c2195d7da665cc0a4830e3c597821b3312ba6e6e",
-          "message": "Merge pull request #233 from czlonkowski/feat/telemetry-system-clean\n\nfix: refactor telemetry system with critical improvements (v2.14.1)",
-          "timestamp": "2025-09-26T19:31:37+02:00",
-          "tree_id": "122a1aed02b56f2d3efc142a06fbb15d563056e8",
-          "url": "https://github.com/czlonkowski/n8n-mcp/commit/c2195d7da665cc0a4830e3c597821b3312ba6e6e"
-        },
-        "date": 1758907988306,
-        "tool": "customSmallerIsBetter",
-        "benches": [
-          {
-            "name": "sample - array sorting - small",
-            "value": 0.0192,
-            "range": "0.23179999999999998",
-            "unit": "ms",
-            "extra": "52026 ops/sec"
-          },
-          {
-            "name": "sample - array sorting - large",
-            "value": 3.1651,
-            "range": "0.6850999999999998",
-            "unit": "ms",
-            "extra": "316 ops/sec"
-          },
-          {
-            "name": "sample - string concatenation",
-            "value": 0.0046,
-            "range": "0.27490000000000003",
-            "unit": "ms",
-            "extra": "215466 ops/sec"
-          },
-          {
-            "name": "sample - object creation",
-            "value": 0.0683,
-            "range": "0.3349",
-            "unit": "ms",
-            "extra": "14636 ops/sec"
-          }
-        ]
-      },
       {
         "commit": {
           "author": {
@@ -2235,6 +2183,37 @@ window.BENCHMARK_DATA = {
           "url": "https://github.com/czlonkowski/n8n-mcp/commit/fe1309151ae6645e1d776d69cde8a72a10890d2e"
         },
         "date": 1760391834049,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0136,
+            "range": "0.3096",
+            "unit": "ms",
+            "extra": "73341 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "8d20c64f5c657700ec8ec82562af36f23de09112",
+          "message": "Revert to v2.18.10 - Remove session persistence (v2.19.0-v2.19.5) (#322)\n\nAfter 5 consecutive hotfix attempts, session persistence has proven\narchitecturally incompatible with the MCP SDK. Rolling back to last\nknown stable version.\n\n## Removed\n- 16 new files (session types, docs, tests, planning docs)\n- 1,100+ lines of session persistence code\n- Session restoration hooks and lifecycle events\n- Retry policy and warm-start implementations\n\n## Restored\n- Stable v2.18.10 codebase\n- Library export fields (from PR #310)\n- All core MCP functionality\n\n## Breaking Changes\n- Session persistence APIs removed\n- onSessionNotFound hook removed\n- Session lifecycle events removed\n\nThis reverts commits fe13091 through 1d34ad8.\nRestores commit 4566253 (v2.18.10, PR #310).\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-authored-by: Claude <noreply@anthropic.com>",
+          "timestamp": "2025-10-14T10:13:43+02:00",
+          "tree_id": "1a3dae74ae5010ff5e212b1f629bacc30466b6f7",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/8d20c64f5c657700ec8ec82562af36f23de09112"
+        },
+        "date": 1760429730232,
         "tool": "customSmallerIsBetter",
         "benches": [
           {
