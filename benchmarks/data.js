@@ -1,60 +1,8 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1760429730658,
+  "lastUpdate": 1760433020105,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
-      {
-        "commit": {
-          "author": {
-            "email": "56956555+czlonkowski@users.noreply.github.com",
-            "name": "Romuald Członkowski",
-            "username": "czlonkowski"
-          },
-          "committer": {
-            "email": "noreply@github.com",
-            "name": "GitHub",
-            "username": "web-flow"
-          },
-          "distinct": true,
-          "id": "840549726303fe8a58f2468f6d068413b7eb7e55",
-          "message": "Merge pull request #238 from czlonkowski/fix/validation-false-positives\n\nfix: resolve validation false positives for Google Drive and Code nodes (v2.14.2)",
-          "timestamp": "2025-09-29T22:04:51+02:00",
-          "tree_id": "540884612b56bfcb06edec318e7a911101285f51",
-          "url": "https://github.com/czlonkowski/n8n-mcp/commit/840549726303fe8a58f2468f6d068413b7eb7e55"
-        },
-        "date": 1759176375425,
-        "tool": "customSmallerIsBetter",
-        "benches": [
-          {
-            "name": "sample - array sorting - small",
-            "value": 0.019,
-            "range": "0.2057",
-            "unit": "ms",
-            "extra": "52512 ops/sec"
-          },
-          {
-            "name": "sample - array sorting - large",
-            "value": 3.1769,
-            "range": "0.9382000000000001",
-            "unit": "ms",
-            "extra": "315 ops/sec"
-          },
-          {
-            "name": "sample - string concatenation",
-            "value": 0.0046,
-            "range": "0.2655",
-            "unit": "ms",
-            "extra": "215939 ops/sec"
-          },
-          {
-            "name": "sample - object creation",
-            "value": 0.0667,
-            "range": "0.30929999999999996",
-            "unit": "ms",
-            "extra": "14998 ops/sec"
-          }
-        ]
-      },
       {
         "commit": {
           "author": {
@@ -2214,6 +2162,37 @@ window.BENCHMARK_DATA = {
           "url": "https://github.com/czlonkowski/n8n-mcp/commit/8d20c64f5c657700ec8ec82562af36f23de09112"
         },
         "date": 1760429730232,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0136,
+            "range": "0.3096",
+            "unit": "ms",
+            "extra": "73341 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "43998992551a392828118b1575bbf4b2d552d821",
+          "message": "chore: update n8n to 1.115.2 and bump version to 2.18.11 (#323)\n\n- Updated n8n to ^1.115.2 (from ^1.114.3)\n- Updated n8n-core to ^1.114.0 (from ^1.113.1)\n- Updated n8n-workflow to ^1.112.0 (from ^1.111.0)\n- Updated @n8n/n8n-nodes-langchain to ^1.114.1 (from ^1.113.1)\n- Rebuilt node database with 537 nodes (increased from 525)\n- All 1,181 functional tests passing (1 flaky performance test)\n- All validation tests passing\n- Built and ready for deployment\n- Updated README n8n version badge\n- Updated CHANGELOG.md\n\n🤖 Generated with [Claude Code](https://claude.ai/code)\n\nCo-authored-by: Claude <noreply@anthropic.com>",
+          "timestamp": "2025-10-14T11:08:25+02:00",
+          "tree_id": "643e7d5e303f30278e8ed0f47936599f4f0ea291",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/43998992551a392828118b1575bbf4b2d552d821"
+        },
+        "date": 1760433019804,
         "tool": "customSmallerIsBetter",
         "benches": [
           {
