@@ -25,7 +25,8 @@ RUN npm run build
 FROM node:22-alpine AS runtime
 WORKDIR /app
 
-# Install system dependencies
+# Install system dependencies including build tools for better-sqlite3 compilation
+# Build tools (python3, make, g++) enable native SQLite instead of sql.js, preventing memory leaks
 RUN apk add --no-cache curl python3 make g++ && \
     rm -rf /var/cache/apk/*
 

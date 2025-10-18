@@ -232,15 +232,29 @@ class BetterSQLiteAdapter implements DatabaseAdapter {
  */
 class SQLJSAdapter implements DatabaseAdapter {
   private saveTimer: NodeJS.Timeout | null = null;
-  
+  private saveIntervalMs: number;
+
+  // Default save interval: 5 seconds (balance between data safety and performance)
+  // Configurable via SQLJS_SAVE_INTERVAL_MS environment variable
+  private static readonly DEFAULT_SAVE_INTERVAL_MS = 5000;
+
   constructor(private db: any, private dbPath: string) {
-    // Set up auto-save on changes
-    this.scheduleSave();
+    // Read save interval from environment or use default
+    const envInterval = process.env.SQLJS_SAVE_INTERVAL_MS;
+    this.saveIntervalMs = envInterval ? parseInt(envInterval, 10) : SQLJSAdapter.DEFAULT_SAVE_INTERVAL_MS;
+
+    // Validate interval
+    if (isNaN(this.saveIntervalMs) || this.saveIntervalMs < 100) {
+      logger.warn(`Invalid SQLJS_SAVE_INTERVAL_MS value: ${envInterval}, using default ${SQLJSAdapter.DEFAULT_SAVE_INTERVAL_MS}ms`);
+      this.saveIntervalMs = SQLJSAdapter.DEFAULT_SAVE_INTERVAL_MS;
+    }
+
+    logger.debug(`SQLJSAdapter initialized with save interval: ${this.saveIntervalMs}ms`);
   }
   
   prepare(sql: string): PreparedStatement {
     const stmt = this.db.prepare(sql);
-    this.scheduleSave();
+    // Don't schedule save on prepare - only on actual writes (via SQLJSStatement.run())
     return new SQLJSStatement(stmt, () => this.scheduleSave());
   }
   
@@ -301,19 +315,26 @@ class SQLJSAdapter implements DatabaseAdapter {
     if (this.saveTimer) {
       clearTimeout(this.saveTimer);
     }
-    
-    // Save after 100ms of inactivity
+
+    // Save after configured interval of inactivity (default: 5000ms)
+    // This debouncing reduces memory churn from frequent buffer allocations
     this.saveTimer = setTimeout(() => {
       this.saveToFile();
-    }, 100);
+    }, this.saveIntervalMs);
   }
   
   private saveToFile(): void {
     try {
+      // Export database to Uint8Array (2-5MB typical)
       const data = this.db.export();
-      const buffer = Buffer.from(data);
-      fsSync.writeFileSync(this.dbPath, buffer);
+
+      // Write directly without Buffer.from() copy (saves 50% memory allocation)
+      // writeFileSync accepts Uint8Array directly, no need for Buffer conversion
+      fsSync.writeFileSync(this.dbPath, data);
       logger.debug(`Database saved to ${this.dbPath}`);
+
+      // Note: 'data' reference is automatically cleared when function exits
+      // V8 GC will reclaim the Uint8Array once it's no longer referenced
     } catch (error) {
       logger.error('Failed to save database', error);
     }
