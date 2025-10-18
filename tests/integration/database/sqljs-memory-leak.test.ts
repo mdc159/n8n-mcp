@@ -289,7 +289,7 @@ describe('SQLJSAdapter Memory Leak Prevention (Issue #330)', () => {
       // - Total temporary memory: ~20-50MB (90-95% reduction)
 
       // Should have saved much fewer times than operations (batching works)
-      expect(saveCallback).toBeLessThan(10);
+      expect(saveCallback.mock.calls.length).toBeLessThan(10);
 
       // Cleanup
       if (timer) clearTimeout(timer);

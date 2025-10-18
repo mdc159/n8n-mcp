@@ -57,10 +57,11 @@ Day 3:   2250 MB  (extrapolated - OOM kill)
 - After: `fsSync.writeFileSync(path, data);` (direct Uint8Array write)
 - **Impact:** 50% reduction in temporary allocations per save
 
-✅ **Added explicit cleanup**
-- Wrapped saveToFile() in try-finally with `data = null`
-- Helps garbage collector reclaim memory faster
-- **Impact:** Prevents reference retention
+✅ **Optimized memory allocation**
+- Removed Buffer.from() copy, write Uint8Array directly to disk
+- Local variable automatically cleared when function exits
+- V8 garbage collector can reclaim memory immediately after save
+- **Impact:** 50% reduction in temporary allocations per save
 
 ✅ **Made save interval configurable**
 - New env var: `SQLJS_SAVE_INTERVAL_MS` (default: 5000)

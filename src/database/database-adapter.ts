@@ -233,9 +233,17 @@ class BetterSQLiteAdapter implements DatabaseAdapter {
 class SQLJSAdapter implements DatabaseAdapter {
   private saveTimer: NodeJS.Timeout | null = null;
   private saveIntervalMs: number;
+  private closed = false; // Prevent multiple close() calls
 
   // Default save interval: 5 seconds (balance between data safety and performance)
   // Configurable via SQLJS_SAVE_INTERVAL_MS environment variable
+  //
+  // DATA LOSS WINDOW: Up to 5 seconds of database changes may be lost if process
+  // crashes before scheduleSave() timer fires. This is acceptable because:
+  // 1. close() calls saveToFile() immediately on graceful shutdown
+  // 2. Docker/Kubernetes SIGTERM provides 30s for cleanup (more than enough)
+  // 3. The alternative (100ms interval) caused 2.2GB memory leaks in production
+  // 4. MCP server is primarily read-heavy (writes are rare)
   private static readonly DEFAULT_SAVE_INTERVAL_MS = 5000;
 
   constructor(private db: any, private dbPath: string) {
@@ -243,13 +251,21 @@ class SQLJSAdapter implements DatabaseAdapter {
     const envInterval = process.env.SQLJS_SAVE_INTERVAL_MS;
     this.saveIntervalMs = envInterval ? parseInt(envInterval, 10) : SQLJSAdapter.DEFAULT_SAVE_INTERVAL_MS;
 
-    // Validate interval
-    if (isNaN(this.saveIntervalMs) || this.saveIntervalMs < 100) {
-      logger.warn(`Invalid SQLJS_SAVE_INTERVAL_MS value: ${envInterval}, using default ${SQLJSAdapter.DEFAULT_SAVE_INTERVAL_MS}ms`);
+    // Validate interval (minimum 100ms, maximum 60000ms = 1 minute)
+    if (isNaN(this.saveIntervalMs) || this.saveIntervalMs < 100 || this.saveIntervalMs > 60000) {
+      logger.warn(
+        `Invalid SQLJS_SAVE_INTERVAL_MS value: ${envInterval} (must be 100-60000ms), ` +
+        `using default ${SQLJSAdapter.DEFAULT_SAVE_INTERVAL_MS}ms`
+      );
       this.saveIntervalMs = SQLJSAdapter.DEFAULT_SAVE_INTERVAL_MS;
     }
 
     logger.debug(`SQLJSAdapter initialized with save interval: ${this.saveIntervalMs}ms`);
+
+    // NOTE: No initial save scheduled here (optimization)
+    // Database is either:
+    // 1. Loaded from existing file (already persisted), or
+    // 2. New database (will be saved on first write operation)
   }
   
   prepare(sql: string): PreparedStatement {
@@ -264,11 +280,18 @@ class SQLJSAdapter implements DatabaseAdapter {
   }
   
   close(): void {
+    if (this.closed) {
+      logger.debug('SQLJSAdapter already closed, skipping');
+      return;
+    }
+
     this.saveToFile();
     if (this.saveTimer) {
       clearTimeout(this.saveTimer);
+      this.saveTimer = null;
     }
     this.db.close();
+    this.closed = true;
   }
   
   pragma(key: string, value?: any): any {
@@ -318,6 +341,12 @@ class SQLJSAdapter implements DatabaseAdapter {
 
     // Save after configured interval of inactivity (default: 5000ms)
     // This debouncing reduces memory churn from frequent buffer allocations
+    //
+    // NOTE: Under constant write load, saves may be delayed until writes stop.
+    // This is acceptable because:
+    // 1. MCP server is primarily read-heavy (node lookups, searches)
+    // 2. Writes are rare (only during database rebuilds)
+    // 3. close() saves immediately on shutdown, flushing any pending changes
     this.saveTimer = setTimeout(() => {
       this.saveToFile();
     }, this.saveIntervalMs);
