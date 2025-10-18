@@ -1,60 +1,8 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1760434399729,
+  "lastUpdate": 1760807016396,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
-      {
-        "commit": {
-          "author": {
-            "email": "56956555+czlonkowski@users.noreply.github.com",
-            "name": "Romuald Członkowski",
-            "username": "czlonkowski"
-          },
-          "committer": {
-            "email": "noreply@github.com",
-            "name": "GitHub",
-            "username": "web-flow"
-          },
-          "distinct": true,
-          "id": "3728a9cc67e3c6e9f000715c9a79e859c52dd13b",
-          "message": "Merge pull request #240 from czlonkowski/feature/partial-update-enhancements\n\nfeat: Add workflow cleanup and recovery operations (v2.14.4)",
-          "timestamp": "2025-09-30T14:47:23+02:00",
-          "tree_id": "e979bab861e5c15b3f008e123c1a0dd86b6189fe",
-          "url": "https://github.com/czlonkowski/n8n-mcp/commit/3728a9cc67e3c6e9f000715c9a79e859c52dd13b"
-        },
-        "date": 1759236546682,
-        "tool": "customSmallerIsBetter",
-        "benches": [
-          {
-            "name": "sample - array sorting - small",
-            "value": 0.0191,
-            "range": "0.2371",
-            "unit": "ms",
-            "extra": "52490 ops/sec"
-          },
-          {
-            "name": "sample - array sorting - large",
-            "value": 3.1642,
-            "range": "0.5306000000000002",
-            "unit": "ms",
-            "extra": "316 ops/sec"
-          },
-          {
-            "name": "sample - string concatenation",
-            "value": 0.005,
-            "range": "0.2558",
-            "unit": "ms",
-            "extra": "199339 ops/sec"
-          },
-          {
-            "name": "sample - object creation",
-            "value": 0.0657,
-            "range": "0.3712",
-            "unit": "ms",
-            "extra": "15223 ops/sec"
-          }
-        ]
-      },
       {
         "commit": {
           "author": {
@@ -2172,6 +2120,37 @@ window.BENCHMARK_DATA = {
           "url": "https://github.com/czlonkowski/n8n-mcp/commit/0f5b0d9463149923267293cd3b7255e6fb2c7116"
         },
         "date": 1760434398965,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0136,
+            "range": "0.3096",
+            "unit": "ms",
+            "extra": "73341 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "5881304ed8b568c150a8369ef5c6dc8a4a8fe0e1",
+          "message": "feat: Add MCP server icon support (SEP-973) v2.20.0 (#333)\n\n* feat: Add MCP server icon support (SEP-973) v2.20.0\n\nImplements custom server icons for MCP clients according to the MCP\nspecification SEP-973. Icons enable better visual identification of\nthe n8n-mcp server in MCP client interfaces.\n\nFeatures:\n- Added 3 icon sizes: 192x192, 128x128, 48x48 (PNG format)\n- Icons served from https://www.n8n-mcp.com/logo*.png\n- Added websiteUrl field pointing to https://n8n-mcp.com\n- Server version now uses package.json (PROJECT_VERSION) instead of hardcoded '1.0.0'\n\nChanges:\n- Upgraded @modelcontextprotocol/sdk from ^1.13.2 to ^1.20.1\n- Updated src/mcp/server.ts with icon configuration\n- Bumped version to 2.20.0\n- Updated CHANGELOG.md with release notes\n\nTesting:\n- All icon URLs verified accessible (HTTP 200, CORS enabled)\n- Build passes, type checking passes\n- No breaking changes, fully backward compatible\n\nIcons won't display in Claude Desktop yet (pending upstream UI support),\nbut will appear automatically when support is added. Other MCP clients\nmay already support icon display.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\n\n* docs: Fix icon URLs in CHANGELOG to reflect actual implementation\n\nThe CHANGELOG incorrectly documented icon URLs as\nhttps://api.n8n-mcp.com/public/logo-*.png when the actual\nimplementation uses https://www.n8n-mcp.com/logo*.png\n\nThis updates the documentation to match the code.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\n\n---------\n\nCo-authored-by: Claude <noreply@anthropic.com>",
+          "timestamp": "2025-10-18T19:01:32+02:00",
+          "tree_id": "a0ae6306acfba6d470fac5adfd93eb04d460b46a",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/5881304ed8b568c150a8369ef5c6dc8a4a8fe0e1"
+        },
+        "date": 1760807016137,
         "tool": "customSmallerIsBetter",
         "benches": [
           {
