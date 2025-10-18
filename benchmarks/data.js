@@ -1,60 +1,8 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1760807016396,
+  "lastUpdate": 1760812460909,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
-      {
-        "commit": {
-          "author": {
-            "email": "56956555+czlonkowski@users.noreply.github.com",
-            "name": "Romuald Członkowski",
-            "username": "czlonkowski"
-          },
-          "committer": {
-            "email": "noreply@github.com",
-            "name": "GitHub",
-            "username": "web-flow"
-          },
-          "distinct": true,
-          "id": "a1db133a50baa8c60d662e0ebf136776b45a0822",
-          "message": "Merge pull request #241 from czlonkowski/feature/partial-update-enhancements\n\ntest: add 46 tests to improve workflow-diff-engine coverage to 89.51%",
-          "timestamp": "2025-09-30T17:53:02+02:00",
-          "tree_id": "94da5c8c1d270275efc0f035c38fa61d4c2498bf",
-          "url": "https://github.com/czlonkowski/n8n-mcp/commit/a1db133a50baa8c60d662e0ebf136776b45a0822"
-        },
-        "date": 1759247680458,
-        "tool": "customSmallerIsBetter",
-        "benches": [
-          {
-            "name": "sample - array sorting - small",
-            "value": 0.0191,
-            "range": "0.3052",
-            "unit": "ms",
-            "extra": "52360 ops/sec"
-          },
-          {
-            "name": "sample - array sorting - large",
-            "value": 3.3636,
-            "range": "3.0083",
-            "unit": "ms",
-            "extra": "297 ops/sec"
-          },
-          {
-            "name": "sample - string concatenation",
-            "value": 0.0046,
-            "range": "0.2665",
-            "unit": "ms",
-            "extra": "215943 ops/sec"
-          },
-          {
-            "name": "sample - object creation",
-            "value": 0.0662,
-            "range": "0.2895",
-            "unit": "ms",
-            "extra": "15101 ops/sec"
-          }
-        ]
-      },
       {
         "commit": {
           "author": {
@@ -2151,6 +2099,37 @@ window.BENCHMARK_DATA = {
           "url": "https://github.com/czlonkowski/n8n-mcp/commit/5881304ed8b568c150a8369ef5c6dc8a4a8fe0e1"
         },
         "date": 1760807016137,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0136,
+            "range": "0.3096",
+            "unit": "ms",
+            "extra": "73341 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "05f68b8ea127ebde05d6a24f641e04bb1591f6ec",
+          "message": "fix: Prevent Docker multi-arch race condition (fixes #328) (#334)\n\n* fix: Prevent Docker multi-arch race condition (fixes #328)\n\nResolves race condition where docker-build.yml and release.yml both\npush to 'latest' tag simultaneously, causing temporary ARM64-only\nmanifest that breaks AMD64 users.\n\nRoot Cause Analysis:\n- During v2.20.0 release, 5 workflows ran concurrently on same commit\n- docker-build.yml (triggered by main push + v* tag)\n- release.yml (triggered by package.json version change)\n- Both workflows pushed to 'latest' tag with no coordination\n- Temporal window existed where only ARM64 platform was available\n\nChanges - docker-build.yml:\n- Remove v* tag trigger (let release.yml handle versioned releases)\n- Add concurrency group to prevent overlapping runs on same branch\n- Enable build cache (change no-cache: true -> false)\n- Add cache-from/cache-to for consistency with release.yml\n- Add multi-arch manifest verification after push\n\nChanges - release.yml:\n- Update concurrency group to be ref-specific (release-${{ github.ref }})\n- Add multi-arch manifest verification for 'latest' tag\n- Add multi-arch manifest verification for version tag\n- Add 5s delay before verification to ensure registry processes push\n\nImpact:\n✅ Eliminates race condition between workflows\n✅ Ensures 'latest' tag always has both AMD64 and ARM64\n✅ Faster builds (caching enabled in docker-build.yml)\n✅ Automatic verification catches incomplete pushes\n✅ Clearer separation: docker-build.yml for CI, release.yml for releases\n\nTesting:\n- TypeScript compilation passes\n- YAML syntax validated\n- Will test on feature branch before merge\n\nCloses #328\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\n\n* fix: Address code review - use shared concurrency group and add retry logic\n\nCritical fixes based on code review feedback:\n\n1. CRITICAL: Fixed concurrency groups to be shared between workflows\n   - Changed from workflow-specific groups to shared 'docker-push-${{ github.ref }}'\n   - This actually prevents the race condition (previous groups were isolated)\n   - Both workflows now serialize Docker pushes to prevent simultaneous updates\n\n2. Added retry logic with exponential backoff\n   - Replaced fixed 5s sleep with intelligent retry mechanism\n   - Retries up to 5 times with exponential backoff: 2s, 4s, 8s, 16s\n   - Accounts for registry propagation delays\n   - Fails fast if manifest is still incomplete after all retries\n\n3. Improved Railway build job\n   - Added 'needs: build' dependency to ensure sequential execution\n   - Enabled caching (no-cache: false) for faster builds\n   - Added cache-from/cache-to for consistency\n\n4. Enhanced verification messaging\n   - Clarified version tag format (without 'v' prefix)\n   - Added attempt counters and wait time indicators\n   - Better error messages with full manifest output\n\nPrevious Issue:\n- docker-build.yml used group: docker-build-${{ github.ref }}\n- release.yml used group: release-${{ github.ref }}\n- These are DIFFERENT groups, so no serialization occurred\n\nFixed:\n- Both now use group: docker-push-${{ github.ref }}\n- Workflows will wait for each other to complete\n- Race condition eliminated\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\n\n* chore: bump version to 2.20.1 and update CHANGELOG\n\nVersion Changes:\n- package.json: 2.20.0 → 2.20.1\n- package.runtime.json: 2.19.6 → 2.20.1 (sync with main version)\n\nCHANGELOG Updates:\n- Added comprehensive v2.20.1 entry documenting Issue #328 fix\n- Detailed problem analysis with race condition timeline\n- Root cause explanation (separate concurrency groups)\n- Complete list of fixes and improvements\n- Before/after comparison showing impact\n- Technical details on concurrency serialization and retry logic\n- References to issue #328, PR #334, and code review\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\n\n---------\n\nCo-authored-by: Claude <noreply@anthropic.com>",
+          "timestamp": "2025-10-18T20:32:20+02:00",
+          "tree_id": "3c0e66204720e2637e20795e79d2c841bd201e62",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/05f68b8ea127ebde05d6a24f641e04bb1591f6ec"
+        },
+        "date": 1760812460196,
         "tool": "customSmallerIsBetter",
         "benches": [
           {
