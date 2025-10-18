@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 **MCP Server Icon Support (SEP-973)**
 
 - Added custom server icons for MCP clients
-  - Icons served from https://api.n8n-mcp.com/public/logo-*.png
+  - Icons served from https://www.n8n-mcp.com/logo*.png
   - Multiple sizes: 48x48, 128x128, 192x192
   - Future-proof for Claude Desktop icon UI support
 - Added websiteUrl field pointing to https://n8n-mcp.com
