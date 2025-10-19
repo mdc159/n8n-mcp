@@ -1,60 +1,8 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1760818398508,
+  "lastUpdate": 1760907240069,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
-      {
-        "commit": {
-          "author": {
-            "email": "56956555+czlonkowski@users.noreply.github.com",
-            "name": "Romuald Członkowski",
-            "username": "czlonkowski"
-          },
-          "committer": {
-            "email": "noreply@github.com",
-            "name": "GitHub",
-            "username": "web-flow"
-          },
-          "distinct": true,
-          "id": "4854a50854003072814c59828720b6d646292e10",
-          "message": "Merge pull request #244 from czlonkowski/feature/webhook-error-execution-guidance\n\nfeat: enhance webhook error messages with execution guidance",
-          "timestamp": "2025-10-01T12:08:49+02:00",
-          "tree_id": "6b499b925c568797822462bd7941a791b38b8f18",
-          "url": "https://github.com/czlonkowski/n8n-mcp/commit/4854a50854003072814c59828720b6d646292e10"
-        },
-        "date": 1759313434545,
-        "tool": "customSmallerIsBetter",
-        "benches": [
-          {
-            "name": "sample - array sorting - small",
-            "value": 0.0191,
-            "range": "0.24659999999999999",
-            "unit": "ms",
-            "extra": "52220 ops/sec"
-          },
-          {
-            "name": "sample - array sorting - large",
-            "value": 3.1619,
-            "range": "1.3000000000000003",
-            "unit": "ms",
-            "extra": "316 ops/sec"
-          },
-          {
-            "name": "sample - string concatenation",
-            "value": 0.0048,
-            "range": "0.25780000000000003",
-            "unit": "ms",
-            "extra": "206903 ops/sec"
-          },
-          {
-            "name": "sample - object creation",
-            "value": 0.0669,
-            "range": "0.3",
-            "unit": "ms",
-            "extra": "14951 ops/sec"
-          }
-        ]
-      },
       {
         "commit": {
           "author": {
@@ -2109,6 +2057,37 @@ window.BENCHMARK_DATA = {
           "url": "https://github.com/czlonkowski/n8n-mcp/commit/0d2d9bdd523208b44c154264a693fc1a026722cc"
         },
         "date": 1760818398133,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0136,
+            "range": "0.3096",
+            "unit": "ms",
+            "extra": "73341 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "538618b1bcbf0f5c3f26a078262398a3f9a5ea1a",
+          "message": "feat: Enhanced error messages and documentation for workflow validation (fixes #331) v2.20.3 (#339)\n\n* fix: Prevent broken workflows via partial updates (fixes #331)\n\nAdded final workflow structure validation to n8n_update_partial_workflow\nto prevent creating corrupted workflows that the n8n UI cannot render.\n\n## Problem\n- Partial updates validated individual operations but not final structure\n- Could create invalid workflows (no connections, single non-webhook nodes)\n- Result: workflows exist in API but show \"Workflow not found\" in UI\n\n## Solution\n- Added validateWorkflowStructure() after applying diff operations\n- Enhanced error messages with actionable operation examples\n- Reject updates creating invalid workflows with clear feedback\n\n## Changes\n- handlers-workflow-diff.ts: Added final validation before API update\n- n8n-validation.ts: Improved error messages with correct syntax examples\n- Tests: Fixed 3 tests + added 3 new validation scenario tests\n\n## Impact\n- Impossible to create workflows that UI cannot render\n- Clear error messages when validation fails\n- All valid workflows continue to work\n- Validates before API call, prevents corruption at source\n\nCloses #331\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\n\n* fix: Enhanced validation to detect ALL disconnected nodes (fixes #331 phase 2)\n\nImproved workflow structure validation to detect disconnected nodes during\nincremental workflow building, not just workflows with zero connections.\n\n## Problem Discovered via Real-World Testing\nThe initial fix for #331 validated workflows with ZERO connections, but\nmissed the case where nodes are added incrementally:\n- Workflow has Webhook → HTTP Request (1 connection) ✓\n- Add Set node WITHOUT connecting it → validation passed ✗\n- Result: disconnected node that UI cannot render properly\n\n## Root Cause\nValidation checked `connectionCount === 0` but didn't verify that ALL\nnodes have connections.\n\n## Solution - Enhanced Detection\nBuild connection graph and identify ALL disconnected nodes:\n- Track all nodes appearing in connections (as source OR target)\n- Find nodes with no incoming or outgoing connections\n- Handle webhook/trigger nodes specially (can be source-only)\n- Report specific disconnected nodes with actionable fixes\n\n## Changes\n- n8n-validation.ts: Comprehensive disconnected node detection\n  - Builds Set of connected nodes from connection graph\n  - Identifies orphaned nodes (not in connection graph)\n  - Provides error with node names and suggested fix\n- Tests: Added test for incremental disconnected node scenario\n  - Creates 2-node workflow with connection\n  - Adds 3rd node WITHOUT connecting\n  - Verifies validation rejects with clear error\n\n## Validation Logic\n```typescript\n// Phase 1: Check if workflow has ANY connections\nif (connectionCount === 0) { /* error */ }\n\n// Phase 2: Check if ALL nodes are connected (NEW)\nconnectedNodes = Set of all nodes in connection graph\ndisconnectedNodes = nodes NOT in connectedNodes\nif (disconnectedNodes.length > 0) { /* error with node names */ }\n```\n\n## Impact\n- Detects disconnected nodes at ANY point in workflow building\n- Error messages list specific disconnected nodes by name\n- Safe incremental workflow construction\n- Tested against real 28-node workflow building scenario\n\nCloses #331 (complete fix with enhanced detection)\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\n\n* feat: Enhanced error messages and documentation for workflow validation (fixes #331) v2.20.3\n\nSignificantly improved error messages and recovery guidance for workflow validation failures,\nmaking it easier for AI agents to diagnose and fix workflow issues.\n\n## Enhanced Error Messages\n\nAdded comprehensive error categorization and recovery guidance to workflow validation failures:\n\n- Error categorization by type (operator issues, connection issues, missing metadata, branch mismatches)\n- Targeted recovery guidance with specific, actionable steps\n- Clear error messages showing exact problem identification\n- Auto-sanitization notes explaining what can/cannot be fixed\n\nExample error response now includes:\n- details.errors - Array of specific error messages\n- details.errorCount - Number of errors found\n- details.recoveryGuidance - Actionable steps to fix issues\n- details.note - Explanation of what happened\n- details.autoSanitizationNote - Auto-sanitization limitations\n\n## Documentation Updates\n\nUpdated 4 tool documentation files to explain auto-sanitization system:\n\n1. n8n-update-partial-workflow.ts - Added comprehensive \"Auto-Sanitization System\" section\n2. n8n-create-workflow.ts - Added auto-sanitization tips and pitfalls\n3. validate-node-operation.ts - Added IF/Switch operator validation guidance\n4. validate-workflow.ts - Added auto-sanitization best practices\n\n## Impact\n\nAI Agent Experience:\n- ✅ Clear error messages with specific problem identification\n- ✅ Actionable recovery steps\n- ✅ Error categorization for quick understanding\n- ✅ Example code in error responses\n\nDocumentation Quality:\n- ✅ Comprehensive auto-sanitization documentation\n- ✅ Accurate technical claims verified by tests\n- ✅ Clear explanations of limitations\n\n## Testing\n\n- ✅ All 26 update-partial-workflow tests passing\n- ✅ All 14 node-sanitizer tests passing\n- ✅ Backward compatibility maintained\n- ✅ Integration tested with n8n-mcp-tester agent\n- ✅ Code review approved\n\n## Files Changed\n\nCode (1 file):\n- src/mcp/handlers-workflow-diff.ts - Enhanced error messages\n\nDocumentation (4 files):\n- src/mcp/tool-docs/workflow_management/n8n-update-partial-workflow.ts\n- src/mcp/tool-docs/workflow_management/n8n-create-workflow.ts\n- src/mcp/tool-docs/validation/validate-node-operation.ts\n- src/mcp/tool-docs/validation/validate-workflow.ts\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\n\n* fix: Update test workflows to use node names in connections\n\nFix failing CI tests by updating test mocks to use valid workflow structures:\n\n- handlers-workflow-diff.test.ts:\n  - Fixed createTestWorkflow() to use node names instead of IDs in connections\n  - Updated mocked workflows to include proper connections for new nodes\n  - Ensures all test workflows pass structure validation\n\n- n8n-validation.test.ts:\n  - Updated error message assertions to match improved error text\n  - Changed to use .some() with .includes() for flexible matching\n\nAll 8 previously failing tests now pass. Tests validate correct workflow\nstructures going forward.\n\nFixes CI test failures in PR #339\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\n\n* fix: Make workflow validation non-blocking for n8n API integration tests\n\nAllow specific integration tests to skip workflow structure validation\nwhen testing n8n API behavior with edge cases. This fixes CI failures\nin smart-parameters tests while maintaining validation for tests that\nexplicitly verify validation logic.\n\nChanges:\n- Add SKIP_WORKFLOW_VALIDATION env var to bypass validation\n- smart-parameters tests set this flag (they test n8n API edge cases)\n- update-partial-workflow validation tests keep strict validation\n- Validation warnings still logged when skipped\n\nFixes:\n- 12 failing smart-parameters integration tests\n- Maintains all 26 update-partial-workflow tests\n\nRationale: Integration tests that verify n8n API behavior need to test\nworkflows that may have temporary invalid states or edge cases that n8n\nhandles differently than our strict validation. Workflow structure\nvalidation is still enforced for production use and for tests that\nspecifically test the validation logic itself.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\n\n---------\n\nCo-authored-by: Claude <noreply@anthropic.com>",
+          "timestamp": "2025-10-19T22:52:13+02:00",
+          "tree_id": "40064d24ecdbd357128c9e9dcc397e74ae18e215",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/538618b1bcbf0f5c3f26a078262398a3f9a5ea1a"
+        },
+        "date": 1760907239710,
         "tool": "customSmallerIsBetter",
         "benches": [
           {
