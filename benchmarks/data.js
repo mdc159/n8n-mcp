@@ -1,60 +1,8 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1761079529276,
+  "lastUpdate": 1761085000428,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
-      {
-        "commit": {
-          "author": {
-            "email": "56956555+czlonkowski@users.noreply.github.com",
-            "name": "Romuald Członkowski",
-            "username": "czlonkowski"
-          },
-          "committer": {
-            "email": "noreply@github.com",
-            "name": "GitHub",
-            "username": "web-flow"
-          },
-          "distinct": true,
-          "id": "a84dbd6a1596b252bfc56c6a49dac6ee4db0c2d8",
-          "message": "Merge pull request #252 from czlonkowski/feat/integration-tests-foundation\n\nfeat: Integration Testing Foundation (Phase 1)",
-          "timestamp": "2025-10-03T13:30:36+02:00",
-          "tree_id": "03fe6a6421eeab42b0997505ffa9dccbac5b3039",
-          "url": "https://github.com/czlonkowski/n8n-mcp/commit/a84dbd6a1596b252bfc56c6a49dac6ee4db0c2d8"
-        },
-        "date": 1759491141285,
-        "tool": "customSmallerIsBetter",
-        "benches": [
-          {
-            "name": "sample - array sorting - small",
-            "value": 0.0191,
-            "range": "0.2942",
-            "unit": "ms",
-            "extra": "52461 ops/sec"
-          },
-          {
-            "name": "sample - array sorting - large",
-            "value": 3.1812,
-            "range": "0.5036",
-            "unit": "ms",
-            "extra": "314 ops/sec"
-          },
-          {
-            "name": "sample - string concatenation",
-            "value": 0.0048,
-            "range": "0.24780000000000002",
-            "unit": "ms",
-            "extra": "210122 ops/sec"
-          },
-          {
-            "name": "sample - object creation",
-            "value": 0.0671,
-            "range": "0.367",
-            "unit": "ms",
-            "extra": "14895 ops/sec"
-          }
-        ]
-      },
       {
         "commit": {
           "author": {
@@ -2025,6 +1973,37 @@ window.BENCHMARK_DATA = {
           "url": "https://github.com/czlonkowski/n8n-mcp/commit/ab6b55469269ba789b27ab2b8b9fe8be835a8da9"
         },
         "date": 1761079528600,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0136,
+            "range": "0.3096",
+            "unit": "ms",
+            "extra": "73341 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "32a25e2706d155f2ba22bc736e77d23998d2b79f",
+          "message": "fix: Add missing tslib dependency to fix npx installation failures (#342) (#347)",
+          "timestamp": "2025-10-22T00:14:37+02:00",
+          "tree_id": "98b72b46cfb8f104909f14cac3cd555eb1f68aa0",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/32a25e2706d155f2ba22bc736e77d23998d2b79f"
+        },
+        "date": 1761085000021,
         "tool": "customSmallerIsBetter",
         "benches": [
           {
