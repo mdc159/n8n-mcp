@@ -1,60 +1,8 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1761071274654,
+  "lastUpdate": 1761079529276,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
-      {
-        "commit": {
-          "author": {
-            "email": "56956555+czlonkowski@users.noreply.github.com",
-            "name": "Romuald Członkowski",
-            "username": "czlonkowski"
-          },
-          "committer": {
-            "email": "noreply@github.com",
-            "name": "GitHub",
-            "username": "web-flow"
-          },
-          "distinct": true,
-          "id": "f74427bdb5fde342bf27f7b19db6b65ca73add68",
-          "message": "Merge pull request #251 from czlonkowski/fix/p0-workflow-creation-normalization-bug\n\nfix(p0): remove incorrect node type normalization before n8n API calls",
-          "timestamp": "2025-10-03T12:13:25+02:00",
-          "tree_id": "bcb74917537b64059331c1c4d3d780b1b45b5191",
-          "url": "https://github.com/czlonkowski/n8n-mcp/commit/f74427bdb5fde342bf27f7b19db6b65ca73add68"
-        },
-        "date": 1759486525133,
-        "tool": "customSmallerIsBetter",
-        "benches": [
-          {
-            "name": "sample - array sorting - small",
-            "value": 0.0194,
-            "range": "0.37020000000000003",
-            "unit": "ms",
-            "extra": "51622 ops/sec"
-          },
-          {
-            "name": "sample - array sorting - large",
-            "value": 3.4046,
-            "range": "0.6403999999999996",
-            "unit": "ms",
-            "extra": "294 ops/sec"
-          },
-          {
-            "name": "sample - string concatenation",
-            "value": 0.0046,
-            "range": "0.28500000000000003",
-            "unit": "ms",
-            "extra": "216003 ops/sec"
-          },
-          {
-            "name": "sample - object creation",
-            "value": 0.0664,
-            "range": "0.41300000000000003",
-            "unit": "ms",
-            "extra": "15066 ops/sec"
-          }
-        ]
-      },
       {
         "commit": {
           "author": {
@@ -2046,6 +1994,37 @@ window.BENCHMARK_DATA = {
           "url": "https://github.com/czlonkowski/n8n-mcp/commit/32264da107ff6a315e5bcc9d854852732af9e1b0"
         },
         "date": 1761071274303,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0136,
+            "range": "0.3096",
+            "unit": "ms",
+            "extra": "73341 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "ab6b55469269ba789b27ab2b8b9fe8be835a8da9",
+          "message": "fix: Reduce validation false positives from 80% to 0% (#346)\n\n* fix: Reduce validation false positives from 80% to 0% on production workflows\n\nImplements code review fixes to eliminate false positives in n8n workflow validation:\n\n**Phase 1: Type Safety (expression-utils.ts)**\n- Added type predicate `value is string` to isExpression() for better TypeScript narrowing\n- Fixed type guard order in hasMixedContent() to check type before calling containsExpression()\n- Improved performance by replacing two includes() with single regex in containsExpression()\n\n**Phase 2: Regex Pattern (expression-validator.ts:217)**\n- Enhanced regex from /(?<!\\$|\\.)/ to /(?<![.$\\w['])...(?!\\s*[:''])/\n- Now properly excludes property access chains, bracket notation, and quoted strings\n- Eliminates false positives for valid n8n expressions\n\n**Phase 3: Error Messages (config-validator.ts)**\n- Enhanced JSON parse errors to include actual error details\n- Changed from generic message to specific error (e.g., \"Unexpected token }\")\n\n**Phase 4: Code Duplication (enhanced-config-validator.ts)**\n- Extracted duplicate credential warning filter into shouldFilterCredentialWarning() helper\n- Replaced 3 duplicate blocks with single DRY method\n\n**Phase 5: Webhook Validation (workflow-validator.ts)**\n- Extracted nested webhook logic into checkWebhookErrorHandling() helper\n- Added comprehensive JSDoc for error handling requirements\n- Improved readability by reducing nesting depth\n\n**Phase 6: Unit Tests (tests/unit/utils/expression-utils.test.ts)**\n- Created comprehensive test suite with 75 test cases\n- Achieved 100% statement/line coverage, 95.23% branch coverage\n- Covers all 5 utility functions with edge cases and integration scenarios\n\n**Validation Results:**\n- Tested on 7 production workflows + 4 synthetic tests\n- False positive rate: 80% → 0%\n- All warnings are now actionable and accurate\n- Expression-based URLs/JSON no longer trigger validation errors\n\nFixes #331\n\nConceived by Romuald Członkowski - https://www.aiadvisors.pl/en\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\n\n* test: Skip moved responseNode validation tests\n\nSkip two tests in node-specific-validators.test.ts that expect\nvalidation functionality that was intentionally moved to\nworkflow-validator.ts in Phase 5.\n\nThe responseNode mode validation requires access to node-level\nonError property, which is not available at the node-specific\nvalidator level (only has access to config/parameters).\n\nTests skipped:\n- should error on responseNode without error handling\n- should not error on responseNode with proper error handling\n\nActual validation now performed by:\n- workflow-validator.ts checkWebhookErrorHandling() method\n\nFixes CI test failure where 1/143 tests was failing.\n\nConceived by Romuald Członkowski - https://www.aiadvisors.pl/en\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\n\n* chore: Bump version to 2.20.5 and update CHANGELOG\n\n- Version bumped from 2.20.4 to 2.20.5\n- Added comprehensive CHANGELOG entry documenting validation improvements\n- False positive rate reduced from 80% to 0%\n- All 7 phases of fixes documented with results and metrics\n\nConceived by Romuald Członkowski - www.aiadvisors.pl/en\n\n---------\n\nCo-authored-by: Claude <noreply@anthropic.com>",
+          "timestamp": "2025-10-21T22:43:29+02:00",
+          "tree_id": "83b23d6a3ee1366580a4e638d31279473c62a848",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/ab6b55469269ba789b27ab2b8b9fe8be835a8da9"
+        },
+        "date": 1761079528600,
         "tool": "customSmallerIsBetter",
         "benches": [
           {
