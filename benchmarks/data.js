@@ -1,60 +1,8 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1760907240069,
+  "lastUpdate": 1761069838677,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
-      {
-        "commit": {
-          "author": {
-            "email": "56956555+czlonkowski@users.noreply.github.com",
-            "name": "Romuald Członkowski",
-            "username": "czlonkowski"
-          },
-          "committer": {
-            "email": "noreply@github.com",
-            "name": "GitHub",
-            "username": "web-flow"
-          },
-          "distinct": true,
-          "id": "2f234780dd6f9d36e2cceb131491737342e75e49",
-          "message": "Merge pull request #247 from czlonkowski/feature/p0-priorities-fixes\n\nfeat(p0-r1): Universal node type normalization to eliminate 80% of validation errors",
-          "timestamp": "2025-10-02T16:54:13+02:00",
-          "tree_id": "0d223a413d648276e7b3285341923363b4b5bb92",
-          "url": "https://github.com/czlonkowski/n8n-mcp/commit/2f234780dd6f9d36e2cceb131491737342e75e49"
-        },
-        "date": 1759416969474,
-        "tool": "customSmallerIsBetter",
-        "benches": [
-          {
-            "name": "sample - array sorting - small",
-            "value": 0.0195,
-            "range": "0.2993",
-            "unit": "ms",
-            "extra": "51235 ops/sec"
-          },
-          {
-            "name": "sample - array sorting - large",
-            "value": 3.438,
-            "range": "0.9804000000000004",
-            "unit": "ms",
-            "extra": "291 ops/sec"
-          },
-          {
-            "name": "sample - string concatenation",
-            "value": 0.0048,
-            "range": "0.2685",
-            "unit": "ms",
-            "extra": "210356 ops/sec"
-          },
-          {
-            "name": "sample - object creation",
-            "value": 0.0667,
-            "range": "0.36769999999999997",
-            "unit": "ms",
-            "extra": "15004 ops/sec"
-          }
-        ]
-      },
       {
         "commit": {
           "author": {
@@ -2088,6 +2036,37 @@ window.BENCHMARK_DATA = {
           "url": "https://github.com/czlonkowski/n8n-mcp/commit/538618b1bcbf0f5c3f26a078262398a3f9a5ea1a"
         },
         "date": 1760907239710,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0136,
+            "range": "0.3096",
+            "unit": "ms",
+            "extra": "73341 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "124107433+wiktorzawa@users.noreply.github.com",
+            "name": "wiktorzawa",
+            "username": "wiktorzawa"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "ef1cf747a36c89ee21594119196f4e3594111e86",
+          "message": "fix: add structuredContent to HTTP wrapper for validation tools (#343)\n\nMerging PR #343 - fixes MCP protocol error -32600 for validation tools via HTTP transport.\n\nThe integration test failures are due to MSW/CI infrastructure issues with external contributor PRs (mock server not responding), NOT the code changes. The fix has been manually tested and verified working with n8n-nodes-mcp community node.\n\nTests pass locally and the code is correct.",
+          "timestamp": "2025-10-21T20:02:13+02:00",
+          "tree_id": "c23f3f1d532747bc85ca4d5e9b6f2ff094e13daf",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/ef1cf747a36c89ee21594119196f4e3594111e86"
+        },
+        "date": 1761069838338,
         "tool": "customSmallerIsBetter",
         "benches": [
           {
