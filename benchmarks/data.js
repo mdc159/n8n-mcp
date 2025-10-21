@@ -1,60 +1,8 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1761069838677,
+  "lastUpdate": 1761071274654,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
-      {
-        "commit": {
-          "author": {
-            "email": "56956555+czlonkowski@users.noreply.github.com",
-            "name": "Romuald Członkowski",
-            "username": "czlonkowski"
-          },
-          "committer": {
-            "email": "noreply@github.com",
-            "name": "GitHub",
-            "username": "web-flow"
-          },
-          "distinct": true,
-          "id": "3bab53a3be7516c9b95516f10a43543de661a8b5",
-          "message": "Merge pull request #250 from czlonkowski/feature/p0-priorities-fixes\n\nfeat(P0-R3): Pre-extracted template configurations + Remove get_node_for_task",
-          "timestamp": "2025-10-03T09:08:07+02:00",
-          "tree_id": "d05bf45ce167750b84362d671ab7341f4d06a746",
-          "url": "https://github.com/czlonkowski/n8n-mcp/commit/3bab53a3be7516c9b95516f10a43543de661a8b5"
-        },
-        "date": 1759475397473,
-        "tool": "customSmallerIsBetter",
-        "benches": [
-          {
-            "name": "sample - array sorting - small",
-            "value": 0.0192,
-            "range": "0.2307",
-            "unit": "ms",
-            "extra": "52217 ops/sec"
-          },
-          {
-            "name": "sample - array sorting - large",
-            "value": 3.1656,
-            "range": "0.46320000000000006",
-            "unit": "ms",
-            "extra": "316 ops/sec"
-          },
-          {
-            "name": "sample - string concatenation",
-            "value": 0.0046,
-            "range": "0.2481",
-            "unit": "ms",
-            "extra": "215526 ops/sec"
-          },
-          {
-            "name": "sample - object creation",
-            "value": 0.0675,
-            "range": "0.2952",
-            "unit": "ms",
-            "extra": "14820 ops/sec"
-          }
-        ]
-      },
       {
         "commit": {
           "author": {
@@ -2067,6 +2015,37 @@ window.BENCHMARK_DATA = {
           "url": "https://github.com/czlonkowski/n8n-mcp/commit/ef1cf747a36c89ee21594119196f4e3594111e86"
         },
         "date": 1761069838338,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0136,
+            "range": "0.3096",
+            "unit": "ms",
+            "extra": "73341 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "32264da107ff6a315e5bcc9d854852732af9e1b0",
+          "message": "enhance: Add safety features to HTTP validation tools response (#345)\n\n* enhance: Add safety features to HTTP validation tools response\n\n- Add TypeScript interface (MCPToolResponse) for type safety\n- Implement 1MB response size validation and truncation\n- Add warning logs for large validation responses\n- Prevent memory issues with size limits (matches STDIO behavior)\n\nThis enhances PR #343's fix with defensive measures:\n- Size validation prevents DoS/memory exhaustion\n- Truncation ensures HTTP transport stability\n- Type safety improves code maintainability\n\nAll changes are backward compatible and non-breaking.\n\nConceived by Romuald Członkowski - https://www.aiadvisors.pl/en\n\n* chore: Version bump to 2.20.4 with documentation\n\n- Bump version 2.20.3 → 2.20.4\n- Add comprehensive CHANGELOG.md entry for v2.20.4\n- Document CI test infrastructure issues in docs/CI_TEST_INFRASTRUCTURE.md\n- Explain MSW/external PR integration test failures\n- Reference PR #343 and enhancement safety features\n\nCode review: 9/10 (code-reviewer agent approved)\n\nConceived by Romuald Członkowski - https://www.aiadvisors.pl/en",
+          "timestamp": "2025-10-21T20:25:48+02:00",
+          "tree_id": "d2b74c88b6cffc9331541959b676f779956ab10d",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/32264da107ff6a315e5bcc9d854852732af9e1b0"
+        },
+        "date": 1761071274303,
         "tool": "customSmallerIsBetter",
         "benches": [
           {
