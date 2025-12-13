@@ -1,60 +1,8 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1765419394452,
+  "lastUpdate": 1765619240145,
   "repoUrl": "https://github.com/mdc159/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
-      {
-        "commit": {
-          "author": {
-            "email": "56956555+czlonkowski@users.noreply.github.com",
-            "name": "Romuald Członkowski",
-            "username": "czlonkowski"
-          },
-          "committer": {
-            "email": "noreply@github.com",
-            "name": "GitHub",
-            "username": "web-flow"
-          },
-          "distinct": true,
-          "id": "4b764c6110f9e06774776ce721d41f4b2fd1c399",
-          "message": "Merge pull request #254 from czlonkowski/fix/telemetry-error-message-capture\n\nfeat(telemetry): capture error messages with security hardening",
-          "timestamp": "2025-10-03T17:07:02+02:00",
-          "tree_id": "0eaea9fd102d37fe82d6ecd16d29c3f72770ef1a",
-          "url": "https://github.com/czlonkowski/n8n-mcp/commit/4b764c6110f9e06774776ce721d41f4b2fd1c399"
-        },
-        "date": 1759504145549,
-        "tool": "customSmallerIsBetter",
-        "benches": [
-          {
-            "name": "sample - array sorting - small",
-            "value": 0.0196,
-            "range": "0.29900000000000004",
-            "unit": "ms",
-            "extra": "50892 ops/sec"
-          },
-          {
-            "name": "sample - array sorting - large",
-            "value": 3.1765,
-            "range": "0.6139000000000001",
-            "unit": "ms",
-            "extra": "315 ops/sec"
-          },
-          {
-            "name": "sample - string concatenation",
-            "value": 0.0046,
-            "range": "0.30920000000000003",
-            "unit": "ms",
-            "extra": "218413 ops/sec"
-          },
-          {
-            "name": "sample - object creation",
-            "value": 0.0662,
-            "range": "0.2958",
-            "unit": "ms",
-            "extra": "15105 ops/sec"
-          }
-        ]
-      },
       {
         "commit": {
           "author": {
@@ -1983,6 +1931,35 @@ window.BENCHMARK_DATA = {
           "url": "https://github.com/mdc159/n8n-mcp/commit/b92e5114634e52aee1fbb477396a21f8c229d470"
         },
         "date": 1765419394042,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0136,
+            "range": "0.3096",
+            "unit": "ms",
+            "extra": "73341 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "romualdczlonkowski@MacBook-Pro-Romuald.local",
+            "name": "Romuald Członkowski"
+          },
+          "committer": {
+            "email": "romualdczlonkowski@MacBook-Pro-Romuald.local",
+            "name": "Romuald Członkowski"
+          },
+          "distinct": true,
+          "id": "551445bcd5b8bd16fb273a3a129142e50401ed99",
+          "message": "fix: revert to Node 20 and use granular NPM token\n\nNPM classic tokens were revoked on Dec 9, 2025. OIDC trusted publishing\nrequires npm >= 11.5.1 which caused lockfile sync issues with npm ci.\n\nReverted to Node 20 with granular access token approach:\n- Removed OIDC permissions block\n- Removed npm upgrade step\n- Restored NODE_AUTH_TOKEN usage\n- Removed --provenance flag\n\nUser created new granular token with \"Bypass 2FA\" enabled.\n\nConceived by Romuald Członkowski - www.aiadvisors.pl/en\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>",
+          "timestamp": "2025-12-12T16:22:04+01:00",
+          "tree_id": "ca956e8b4150654d91afa6662138a60406f46e99",
+          "url": "https://github.com/mdc159/n8n-mcp/commit/551445bcd5b8bd16fb273a3a129142e50401ed99"
+        },
+        "date": 1765619239906,
         "tool": "customSmallerIsBetter",
         "benches": [
           {
